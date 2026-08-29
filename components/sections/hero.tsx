@@ -98,39 +98,49 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
 
               <motion.div
                 variants={itemVariants}
-                className="mt-1 flex flex-col gap-3 sm:flex-row sm:items-center"
+                className="mt-1 grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:items-center"
               >
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                <motion.div 
+                  className="col-span-2 sm:col-span-1"
+                  whileHover={{ scale: 1.03 }} 
+                  whileTap={{ scale: 0.97 }}
+                >
                   <Button
                     nativeButton={false}
                     render={
-                      <Link href={`#${siteConfig.sections.services}`} className="flex items-center gap-2">
+                      <Link href={`#${siteConfig.sections.services}`} className="flex w-full items-center justify-center gap-2">
                         <Briefcase className="size-4" />
                         <span>Services</span>
                       </Link>
                     }
-                    className="h-11 rounded-full bg-blue-500 px-6 text-sm font-medium text-white hover:bg-blue-600"
+                    className="h-11 w-full rounded-full bg-blue-500 px-6 text-sm font-medium text-white hover:bg-blue-600"
                   />
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                
+                <motion.div 
+                  className="col-span-1"
+                  whileHover={{ scale: 1.03 }} 
+                  whileTap={{ scale: 0.97 }}
+                >
                   <Button
                     onClick={onConnectClick}
                     variant="outline"
-                    className="h-11 flex items-center justify-center gap-2 cursor-pointer rounded-full px-6 text-sm font-medium border border-white/10 !bg-transparent hover:!bg-white/10 transition-colors"
+                    className="h-11 w-full flex items-center justify-center gap-1.5 cursor-pointer rounded-full px-2 sm:px-6 text-xs sm:text-sm font-medium border border-white/10 !bg-transparent hover:!bg-white/10 transition-colors"
                   >
                     <Mail className="size-4" />
                     <span>Contact Me</span>
                   </Button>
                 </motion.div>
+                
                 <motion.div 
-                  className="w-full sm:w-auto sm:ml-auto"
+                  className="col-span-1 sm:w-auto sm:ml-auto"
                   whileHover={{ scale: 1.03 }} 
                   whileTap={{ scale: 0.97 }}
                 >
                   <Button
                     onClick={() => setIsCvModalOpen(true)}
                     variant="outline"
-                    className="h-11 flex items-center justify-center gap-2 w-full sm:w-auto cursor-pointer rounded-full px-6 text-sm font-medium border border-white/10 !bg-transparent hover:!bg-white/10 transition-colors"
+                    className="h-11 w-full flex items-center justify-center gap-1.5 cursor-pointer rounded-full px-2 sm:px-6 text-xs sm:text-sm font-medium border border-white/10 !bg-transparent hover:!bg-white/10 transition-colors"
                   >
                     <FileText className="size-4" />
                     <span>View CV</span>
