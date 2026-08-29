@@ -84,7 +84,7 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #09090B;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -122,7 +122,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#09090B] text-foreground;
   }
   html {
     @apply font-sans;
@@ -132,6 +132,11 @@
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
   }
 }
@@ -178,5 +183,35 @@
   }
   50% {
     transform: translateY(4px);
+  }
+}
+
+/* ── AI Workspace focus effect ─────────────────────────────────────────────── */
+body[data-chat-open] main {
+  transform: scale(0.98);
+  opacity: 0.85;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  user-select: none;
+}
+
+body[data-chat-open] canvas {
+  opacity: 0.5 !important;
+  transition: opacity 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-chat-open] main {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Chat overlay blur — desktop only (full-viewport blur is expensive on mobile) */
+@media (pointer: fine) {
+  [data-chat-backdrop] {
+    backdrop-filter: blur(12px) saturate(0.8);
+    -webkit-backdrop-filter: blur(12px) saturate(0.8);
   }
 }

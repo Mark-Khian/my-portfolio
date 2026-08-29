@@ -4,6 +4,10 @@ import {
   GraduationCap,
   Lightbulb,
   Sparkles,
+  Layers,
+  CheckCircle,
+  MessageSquare,
+  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 
@@ -14,39 +18,41 @@ export type AboutTrait = {
 
 export const aboutContent = {
   label: "About",
-  title: "Learning by building, improving by doing",
+  title: "Turning technical skills into practical solutions.",
   intro:
-    "I'm a BSIT student specializing in Networking System Technology — focused on turning curiosity into practical skills through projects, practice, and persistence.",
+    "I'm a Bachelor of Science in Information Technology student specializing in Networking System Technology — focused on turning curiosity into practical skills through projects, practice, and persistence.",
   academic: {
     title: "Academic Background",
     icon: GraduationCap,
     paragraphs: [
-      "I'm pursuing a Bachelor of Science in Information Technology with a specialization in Networking System Technology. My interests span networking, system administration, IT support, web development, and database management.",
-      "I stay sharp through academic projects, personal builds, and hands-on practice — applying what I learn in class to real problems I can solve on my own.",
+      "Fourth-year Bachelor of Science in Information Technology student specializing in Networking System Technology, with hands-on experience in networking, systems, web development, and technical projects.",
     ],
   },
   journey: {
     title: "My Journey",
     icon: Lightbulb,
     paragraphs: [
-      "I enjoy working through technical problems and building solutions that actually work. Reliable systems, smoother workflows, and modern tools all keep me motivated to learn more.",
-      "I don't have years of industry experience yet — but I bring adaptability, a problem-solving mindset, and the drive to keep improving with every project I take on.",
+      "Adaptable across different workflows and technology tools, with a practical approach to understanding systems, solving problems, and getting work done efficiently.",
     ],
   },
   howIWork: {
     title: "How I Work",
     icon: Sparkles,
     traits: [
-      { icon: BookOpen, text: "Detail-oriented and organized" },
-      { icon: Lightbulb, text: "Strong problem-solving mindset" },
-      { icon: Sparkles, text: "Always eager to learn new technologies" },
+      { icon: BookOpen, text: "Quick to understand new tools and systems" },
+      { icon: Layers, text: "Adaptable to different workflows" },
+      { icon: CheckCircle, text: "Organized and detail-oriented" },
       {
-        icon: Briefcase,
-        text: "Clear communicator who enjoys collaborating",
+        icon: Lightbulb,
+        text: "Practical approach to problem-solving",
       },
       {
-        icon: BookOpen,
-        text: "Focused on clean, maintainable, and efficient solutions",
+        icon: MessageSquare,
+        text: "Clear and straightforward communication",
+      },
+      {
+        icon: ShieldCheck,
+        text: "Reliable and consistent with assigned tasks",
       },
     ] satisfies AboutTrait[],
   },
@@ -54,14 +60,13 @@ export const aboutContent = {
     title: "Career Goals",
     icon: Briefcase,
     paragraphs: [
-      "I'm looking for internship opportunities, entry-level IT roles, networking positions, IT support roles, and web development opportunities where I can grow with a team.",
-      "I'm also open to freelance web development projects and technical assistance — anywhere I can contribute while continuing to build my skills professionally.",
+      "I aim to contribute reliable, practical work that improves workflows and makes day-to-day operations easier, while continuously strengthening my professional and technical experience.",
     ],
   },
   virtualAssistant: {
     label: "Additional capability",
-    title: "Virtual Assistant Support",
+    title: "General Virtual Assistant",
     description:
-      "Beyond my technical focus, I can also help with organization, research, documentation, communication, scheduling, productivity tools, and administrative support — useful for teams that need reliable remote assistance alongside technical work.",
+      "I provide reliable remote support for organization, research, documentation, scheduling, communication, and day-to-day administrative tasks using modern productivity tools.",
   },
 } as const;

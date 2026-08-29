@@ -1,43 +1,24 @@
-"use client";
 
-import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { HomeHero } from "@/components/home-hero";
 import { About } from "@/components/sections/about";
-import { Hero } from "@/components/sections/hero";
 import { Skills } from "@/components/sections/skills";
-import { QuickContact } from "@/components/sections/quick-contact";
-import { siteConfig } from "@/lib/site-config";
+import { Services } from "@/components/sections/services";
+import { Contact } from "@/components/sections/contact";
 
-export default function Home() {
-  const [isConnectOpen, setIsConnectOpen] = useState(false);
+import { HomeChatWrapper } from "@/components/home-chat-wrapper";
 
+export default async function Home() {
   return (
     <>
       <main>
-        <Hero onConnectClick={() => setIsConnectOpen(true)} />
+        <HomeHero />
+        <Services />
         <About />
         <Skills />
-        {/* Placeholder anchors for Hero CTAs — replaced as sections are built */}
-        <div
-          id={siteConfig.sections.projects}
-          className="sr-only"
-          aria-hidden="true"
-        />
-        <div
-          id={siteConfig.sections.contact}
-          className="sr-only"
-          aria-hidden="true"
-        />
+        <Contact />
       </main>
 
-      <AnimatePresence>
-        {isConnectOpen && (
-          <QuickContact
-            isOpen={isConnectOpen}
-            onClose={() => setIsConnectOpen(false)}
-          />
-        )}
-      </AnimatePresence>
+      <HomeChatWrapper />
     </>
   );
 }

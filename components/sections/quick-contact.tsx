@@ -2,20 +2,23 @@
 
 import { useEffect, useState, useRef, useCallback, type SVGProps } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { X, ArrowUpRight, Mail, Copy, Check, type LucideIcon } from "lucide-react";
+import { X, ArrowUpRight, Mail, Copy, Check } from "lucide-react";
 
 import { BrandIcon } from "@/components/icons/brand-icons";
-import { GitHubIcon } from "@/components/icons/github";
+import { FaWhatsapp } from "react-icons/fa";
+import { useMediaQuery } from "@/lib/use-media-query";
 import { cn } from "@/lib/utils";
 
-const EMAIL = "markkhianlucaspangilinan@gmail.com";
+import { siteConfig } from "@/lib/site-config";
+
+const EMAIL = siteConfig.links.email;
 
 interface ContactOption {
   slug: string;
   label: string;
   value: string;
   description: string;
-  icon: LucideIcon | React.ComponentType<any>;
+  icon: React.ElementType;
   link: string;
   color: string;
   target: string;
@@ -128,7 +131,8 @@ function ContactCard({
           className="flex-1 flex items-center gap-0 outline-none min-w-0 pr-2"
           onFocus={onFocus}
           onBlur={onBlur}
-          aria-label={`Send email to ${option.value}`}
+          aria-label={option.slug === "gmail" ? "Email Mark Khian Pangilinan" : `Send email to ${option.value}`}
+          title={option.slug === "gmail" ? "Email Mark Khian Pangilinan" : undefined}
         >
           {cardContent}
         </a>
@@ -198,6 +202,8 @@ function ContactCard({
       target={option.target}
       rel="noopener noreferrer"
       className="relative flex items-center justify-between rounded-2xl border border-white/5 bg-white/[0.01] p-4 outline-none transition-all duration-300 group hover:bg-white/[0.03]"
+      aria-label={option.slug === "whatsapp" ? "Message Mark Khian on WhatsApp" : `Open ${option.label}`}
+      title={option.slug === "whatsapp" ? "Message Mark Khian on WhatsApp" : undefined}
       style={{
         borderColor: hovered ? `${option.color}25` : undefined,
         boxShadow: hovered ? `0 0 20px ${option.color}08` : undefined,
@@ -221,8 +227,7 @@ function ContactCard({
 
 export function QuickContact({ isOpen, onClose }: QuickContactProps) {
   const prefersReducedMotion = useReducedMotion();
-  const [isDesktop, setIsDesktop] = useState(true);
-  const [isMounted, setIsMounted] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [copyState, setCopyState] = useState<"idle" | "copied">("idle");
   const [showToast, setShowToast] = useState(false);
@@ -236,19 +241,19 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
       value: EMAIL,
       description: "Send a message directly to my inbox",
       icon: Mail,
-      link: `mailto:${EMAIL}`,
+      link: siteConfig.links.mailto,
       color: "#EA4335",
-      target: "_self",
+      target: "_blank",
       copyable: true,
     },
     {
-      slug: "github",
-      label: "GitHub",
-      value: "github.com/Mark-Khian",
-      description: "Explore my source code and projects",
-      icon: GitHubIcon,
-      link: "https://github.com/Mark-Khian",
-      color: "#FFFFFF",
+      slug: "whatsapp",
+      label: "WhatsApp",
+      value: "WhatsApp",
+      description: "Message me directly for work inquiries.",
+      icon: FaWhatsapp as React.ElementType,
+      link: siteConfig.links.whatsapp,
+      color: "#25D366",
       target: "_blank",
     },
     {
@@ -293,16 +298,6 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
         setShowToast(false);
       }, 2000);
     }
-  }, []);
-
-  // ── Responsive detection ─────────────────────────────────────────────────
-  useEffect(() => {
-    setIsMounted(true);
-    const media = window.matchMedia("(min-width: 768px)");
-    setIsDesktop(media.matches);
-    const listener = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    media.addEventListener("change", listener);
-    return () => media.removeEventListener("change", listener);
   }, []);
 
   // ── Keyboard / scroll lock / focus trap ─────────────────────────────────
@@ -352,7 +347,7 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
   // Cleanup copy timer on unmount
   useEffect(() => () => { if (copyTimer.current) clearTimeout(copyTimer.current); }, []);
 
-  if (!isMounted || !isOpen) return null;
+  if (!isOpen) return null;
 
   // ── Animation variants ───────────────────────────────────────────────────
   const containerVariants = {
@@ -425,14 +420,14 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
   // ── Render ───────────────────────────────────────────────────────────────
   return (
     <div className="fixed inset-0 z-50 flex overflow-hidden">
-      {/* Backdrop */}
+      {/* Backdrop — no blur on mobile (full-viewport blur is expensive on mobile GPU) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
         onClick={onClose}
-        className="absolute inset-0 bg-black/65 backdrop-blur-md"
+        className="absolute inset-0 bg-black/65 sm:backdrop-blur-md"
         aria-hidden="true"
       />
 
@@ -444,7 +439,7 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.95 }}
             transition={desktopTransition}
-            className="relative overflow-visible rounded-3xl border border-white/10 bg-zinc-950/85 p-8 shadow-2xl backdrop-blur-xl"
+            className="relative overflow-visible rounded-3xl border border-white/10 bg-[#09090B]/85 p-8 shadow-2xl backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-title"
@@ -462,10 +457,10 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
             {/* Header */}
             <div className="text-center">
               <h2 id="contact-title" className="text-2xl font-bold tracking-tight text-foreground">
-                Let's Connect
+                Let&apos;s Connect
               </h2>
               <p id="contact-description" className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Feel free to reach out through any of the platforms below. I'm always open to networking, collaboration, internships, freelance opportunities, and meaningful conversations.
+                Open to full-time opportunities, freelance projects, and professional collaborations. Feel free to reach out and let’s discuss how I can contribute to your team or business.
               </p>
             </div>
 
@@ -500,7 +495,7 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "100%" }}
             transition={mobileTransition}
-            className="relative rounded-t-3xl border-t border-x border-white/10 bg-zinc-950 p-6 pb-12 shadow-2xl"
+            className="relative rounded-t-3xl border-t border-x border-white/10 bg-[#09090B] p-6 pb-12 shadow-2xl backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-title-mobile"
@@ -521,10 +516,10 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
             {/* Header */}
             <div className="text-left pr-8">
               <h2 id="contact-title-mobile" className="text-xl font-bold tracking-tight text-foreground">
-                Let's Connect
+                Let&apos;s Connect
               </h2>
               <p id="contact-description-mobile" className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Feel free to reach out through any of the platforms below. I'm always open to networking, collaboration, internships, freelance opportunities, and meaningful conversations.
+                Open to full-time opportunities, freelance projects, and professional collaborations. Feel free to reach out and let’s discuss how I can contribute to your team or business.
               </p>
             </div>
 

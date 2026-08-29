@@ -5,6 +5,7 @@ import {
 
 import { FadeIn } from "@/components/motion/fade-in";
 import { SectionHeader } from "@/components/section-header";
+import { GlassCard } from "@/components/ui/glass-card";
 import { aboutContent } from "@/lib/about-content";
 import { cn } from "@/lib/utils";
 
@@ -24,13 +25,11 @@ function ContentCard({
   variant = "default",
 }: ContentCardProps) {
   return (
-    <article
+    <GlassCard
+      as="article"
       className={cn(
-        "rounded-2xl border p-6 sm:p-8",
-        variant === "default" &&
-          "border-white/10 bg-white/[0.02]",
-        variant === "muted" &&
-          "border-dashed border-white/8 bg-transparent",
+        "flex h-full flex-col p-6 sm:p-8",
+        variant === "muted" && "border-dashed border-white/8",
         className,
       )}
     >
@@ -48,7 +47,7 @@ function ContentCard({
         <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
       </div>
       {children}
-    </article>
+    </GlassCard>
   );
 }
 
@@ -91,13 +90,13 @@ export function About() {
         </FadeIn>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-2">
-          <FadeIn delay={0.05}>
+          <FadeIn delay={0.05} className="h-full">
             <ContentCard title={academic.title} icon={academic.icon}>
               <ProseBlock paragraphs={academic.paragraphs} />
             </ContentCard>
           </FadeIn>
 
-          <FadeIn delay={0.1}>
+          <FadeIn delay={0.1} className="h-full">
             <ContentCard title={journey.title} icon={journey.icon}>
               <ProseBlock paragraphs={journey.paragraphs} />
             </ContentCard>
@@ -129,17 +128,8 @@ export function About() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <ContentCard
-              title={virtualAssistant.title}
-              icon={ClipboardList}
-              variant="muted"
-            >
-              <p className="mb-3 font-mono text-xs tracking-wide text-muted-foreground uppercase">
-                {virtualAssistant.label}
-              </p>
-              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {virtualAssistant.description}
-              </p>
+            <ContentCard title={virtualAssistant.title} icon={ClipboardList}>
+              <ProseBlock paragraphs={[virtualAssistant.description]} />
             </ContentCard>
           </FadeIn>
         </div>
