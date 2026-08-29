@@ -60,7 +60,7 @@ export const siteConfig = {
 } as const;
 
 export const siteMetadata = {
-  title: "Mark Khian Pangilinan — IT Support & Web Developer",
+  title: "Mark Khian Pangilinan | Website Portfolio",
   description: siteConfig.description,
   url:
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",

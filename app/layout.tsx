@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     default: siteMetadata.title,
-    template: `%s | ${siteMetadata.title.split(" — ")[0]}`,
+    template: `%s | ${siteMetadata.title.split(" | ")[0]}`,
   },
   description: siteMetadata.description,
   metadataBase: new URL(siteMetadata.url),

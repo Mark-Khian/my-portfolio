@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  type KeyboardEvent,
-} from "react";
+import { useState, useRef, useEffect, useCallback, type KeyboardEvent } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { X, Send, Bot, RotateCcw, AlertCircle } from "lucide-react";
