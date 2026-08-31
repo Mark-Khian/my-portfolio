@@ -18,7 +18,7 @@ const getCommandOutput = (cmd: string): React.ReactNode => {
       return (
         <div className="flex flex-col gap-1 whitespace-pre-wrap">
           <div>Mark Khian Pangilinan</div>
-          <div className="text-muted-foreground">General VA · Web Development · Tech Support</div>
+          <div className="text-muted-foreground">General VA · Web Development · AI Automation</div>
           <br />
           <div className="text-xs italic text-muted-foreground/50">Type &quot;help&quot; to explore.</div>
         </div>
@@ -39,20 +39,34 @@ const getCommandOutput = (cmd: string): React.ReactNode => {
     case "about":
       return (
         <div className="flex flex-col gap-1 whitespace-pre-wrap">
-          <div>Mark Khian Pangilinan</div>
-          <div className="text-muted-foreground">Bachelor of Science in Information Technology · Network System Technology</div>
+          <div>I’m Khian — working across General Virtual Assistance,</div>
+          <div>Web Development, and AI Automation.</div>
           <br />
-          <div>Focused on practical digital support,</div>
-          <div>web development, and technical solutions.</div>
+          <div>I help simplify daily work through organized support,</div>
+          <div>modern websites, and smarter workflows.</div>
         </div>
       );
     case "skills":
       return (
         <div className="flex flex-col gap-1 whitespace-pre-wrap">
-          <div>General Virtual Assistance</div>
-          <div>Web Development</div>
-          <div>Technical Support</div>
-          <div>Networking & Systems</div>
+          <div className="font-semibold text-blue-400">General VA</div>
+          <div className="text-muted-foreground">→ Email & Calendar Management</div>
+          <div className="text-muted-foreground">→ Data Entry & File Organization</div>
+          <div className="text-muted-foreground">→ Online Research</div>
+          <div className="text-muted-foreground">→ Google Workspace & Microsoft 365</div>
+          <br />
+          <div className="font-semibold text-blue-400">Web Development</div>
+          <div className="text-muted-foreground">→ System Architecture</div>
+          <div className="text-muted-foreground">→ Modern Frameworks</div>
+          <div className="text-muted-foreground">→ Node.js & Express</div>
+          <div className="text-muted-foreground">→ Database Integration</div>
+          <div className="text-muted-foreground">→ API Integration</div>
+          <br />
+          <div className="font-semibold text-blue-400">AI Automation</div>
+          <div className="text-muted-foreground">→ Workflow Design</div>
+          <div className="text-muted-foreground">→ Process Automation</div>
+          <div className="text-muted-foreground">→ AI-Assisted Workflows</div>
+          <div className="text-muted-foreground">→ Intelligent Task Automation</div>
         </div>
       );
     case "services":

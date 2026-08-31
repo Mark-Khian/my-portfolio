@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Mark Khian Pangilinan",
-  role: "General VA · Web Development · Tech Support",
-  tagline: "Helping businesses work smarter, online and behind the scenes.",
+  role: "General VA · Web Development · AI Automation",
+  tagline: "From routine tasks to better workflows.",
   description:
-    "I support businesses with administrative tasks, websites, digital tools, and technical work—so they can focus on running and growing their business.",
+    "Organized tasks, modern websites, and smarter workflows—all built to make your day easier.",
   availability:
     "Available for freelance & remote work opportunities",
   links: {
@@ -21,39 +21,38 @@ export const siteConfig = {
   services: [
     {
       title: "General Virtual Assistant",
-      shortDescription: "Reliable day-to-day administrative and digital support to help keep tasks, files, communication, and workflows organized.",
+      shortDescription: "Reliable support for daily tasks, communication, schedules, files, and other administrative work that keeps things organized.",
       items: [
-        "Email management",
-        "Data entry",
-        "Research",
-        "Google Workspace / Microsoft Office",
-        "File organization",
-        "Scheduling",
-        "Basic automation"
+        "Email & inbox organization",
+        "Calendar & schedule management",
+        "Data entry & record keeping",
+        "Online research",
+        "File & document management",
+        "Google Workspace & Microsoft 365"
       ]
     },
     {
       title: "Full-Stack Development",
-      shortDescription: "Building and maintaining responsive web applications across the frontend, backend, and database layer.",
+      shortDescription: "Building modern, secure web systems across the frontend, backend, database, and API layer.",
       items: [
-        "Frontend development",
-        "Responsive website development",
-        "Website maintenance and updates",
-        "Modern framework-based development",
-        "Backend development",
-        "Database integration and management",
-        "API integration"
+        "System architecture",
+        "Modern frameworks",
+        "Node.js & Express",
+        "Database integration",
+        "API integration",
+        "Security implementation"
       ]
     },
     {
-      title: "Technical Support",
-      shortDescription: "Practical technical support for software, systems, digital tools, and common day-to-day technology issues.",
+      title: "AI Automation",
+      shortDescription: "Creating smarter workflows that reduce repetitive work, connect digital processes, and make everyday tasks more efficient.",
       items: [
-        "Basic troubleshooting",
-        "Software setup and configuration",
-        "System and application support",
-        "Digital workspace support",
-        "Basic networking support"
+        "Workflow Analysis & Process Mapping",
+        "Trigger, Action & Conditional Logic",
+        "Data Mapping & Transformation",
+        "API & System Integration",
+        "AI-Assisted Decision Steps",
+        "Error Handling & Workflow Optimization"
       ]
     }
   ],

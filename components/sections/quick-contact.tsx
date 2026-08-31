@@ -238,8 +238,8 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
     {
       slug: "gmail",
       label: "Email",
-      value: EMAIL,
-      description: "Send a message directly to my inbox",
+      value: "Send me an email",
+      description: "For work inquiries and collaborations",
       icon: Mail,
       link: siteConfig.links.mailto,
       color: "#EA4335",
@@ -249,8 +249,8 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
     {
       slug: "whatsapp",
       label: "WhatsApp",
-      value: "WhatsApp",
-      description: "Message me directly for work inquiries.",
+      value: "Message me on WhatsApp",
+      description: "Message me directly for work inquiries",
       icon: FaWhatsapp as React.ElementType,
       link: siteConfig.links.whatsapp,
       color: "#25D366",
@@ -259,8 +259,8 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
     {
       slug: "instagram",
       label: "Instagram",
-      value: "instagram.com/mkhlucasp",
-      description: "Connect or follow my personal updates",
+      value: "Follow me on Instagram",
+      description: "See updates and personal posts",
       icon: (props: SVGProps<SVGSVGElement>) => <BrandIcon {...props} name="instagram" />,
       link: "https://www.instagram.com/mkhlucasp/?hl=en",
       color: "#E4405F",

@@ -4,15 +4,13 @@ import { useState, useRef, useEffect, memo } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   Code2,
+  Terminal,
+  Workflow,
+  Settings,
   Network,
-  FolderKanban,
+  Layers,
   FileText,
   MessageSquare,
-  Terminal,
-  Wrench,
-  Globe,
-  Layers,
-  FileCode2,
   type LucideIcon,
 } from "lucide-react";
 
@@ -152,66 +150,59 @@ const ToolButton = memo(function ToolButton({
 // ── Skills data (stable — defined outside component to avoid re-creation) ─────
 const coreCategories: Category[] = [
   {
-    id: "tech-stack",
-    title: "Tech Stack",
+    id: "web-development",
+    title: "Web Development",
     description:
-      "Core technologies and platforms I use to build robust applications and manage systems.",
+      "Core technologies used to build and connect modern web applications.",
     icon: Code2,
     accentColor: "#3B82F6",
     tools: [
       { name: "React", slug: "react", color: "#61DAFB", isBrand: true },
       { name: "Next.js", slug: "nextdotjs", color: "#FFFFFF", isBrand: true },
       { name: "TypeScript", slug: "typescript", color: "#3178C6", isBrand: true },
+      { name: "JavaScript", slug: "javascript", color: "#F7DF1E", isBrand: true },
       { name: "Tailwind CSS", slug: "tailwindcss", color: "#06B6D4", isBrand: true },
       { name: "HTML5", slug: "html5", color: "#E34F26", isBrand: true },
       { name: "CSS3", slug: "css3", color: "#1572B6", isBrand: true },
-      { name: "JavaScript", slug: "javascript", color: "#F7DF1E", isBrand: true },
       { name: "Node.js", slug: "nodedotjs", color: "#339933", isBrand: true },
-      { name: "Git", slug: "git", color: "#F05032", isBrand: true },
-      { name: "Cisco Systems", slug: "cisco", color: "#1BA0D7", isBrand: true },
-      { name: "Wireshark", slug: "wireshark", color: "#1679A7", isBrand: true },
-      { name: "Windows OS", slug: "windows", color: "#0078D4", isBrand: true },
-      { name: "Linux OS", slug: "linux", color: "#FCC624", isBrand: true },
     ],
   },
   {
-    id: "technical-skills",
-    title: "Technical Skills",
+    id: "development-systems",
+    title: "Development & Systems",
     description:
-      "Hands-on capabilities across development, networking, and system administration.",
-    icon: Network,
+      "Tools and platforms used for development, version control, operating systems, and network environments.",
+    icon: Terminal,
     accentColor: "#06B6D4",
     tools: [
-      { name: "Web Development", slug: "webdev", color: "#3B82F6", isBrand: false, lucideIcon: Globe },
-      { name: "Full-Stack Development", slug: "fullstack", color: "#8B5CF6", isBrand: false, lucideIcon: Layers },
-      { name: "Networking", slug: "networking", color: "#10B981", isBrand: false, lucideIcon: Network },
-      { name: "System Administration", slug: "sysadmin", color: "#6366F1", isBrand: false, lucideIcon: Terminal },
-      { name: "Scripting", slug: "scripting", color: "#EC4899", isBrand: false, lucideIcon: FileCode2 },
-      { name: "Troubleshooting", slug: "troubleshooting", color: "#FBBF24", isBrand: false, lucideIcon: Wrench },
+      { name: "Git", slug: "git", color: "#F05032", isBrand: true },
+      { name: "Windows OS", slug: "windows", color: "#0078D4", isBrand: true },
+      { name: "Linux OS", slug: "linux", color: "#FCC624", isBrand: true },
+      { name: "Cisco Systems", slug: "cisco", color: "#1BA0D7", isBrand: true },
+      { name: "Wireshark", slug: "wireshark", color: "#1679A7", isBrand: true },
     ],
   },
 ];
 
 const operationalCategories: Category[] = [
   {
-    id: "project-mgmt-crm",
-    title: "Project Management & CRM",
-    description: "Organizing sprints, monitoring deliverables, and managing relationships.",
-    icon: FolderKanban,
-    accentColor: "#6366F1",
+    id: "ai-automation",
+    title: "AI Automation",
+    description: "Tools and workflow capabilities used to connect processes, automate tasks, and add AI-assisted steps.",
+    icon: Workflow,
+    accentColor: "#8B5CF6",
     tools: [
-      { name: "ClickUp", slug: "clickup", color: "#7B68EE", isBrand: true },
-      { name: "Asana", slug: "asana", color: "#F06A6A", isBrand: true },
-      { name: "Trello", slug: "trello", color: "#0079BF", isBrand: true },
-      { name: "Notion", slug: "notion", color: "#FFFFFF", isBrand: true },
-      { name: "HubSpot", slug: "hubspot", color: "#FF7A59", isBrand: true },
-      { name: "Airtable", slug: "airtable", color: "#18BFFF", isBrand: true },
+      { name: "OpenAI", slug: "openai", color: "#10A37F", isBrand: true },
+      { name: "Workflow Design", slug: "workflow-design", color: "#8B5CF6", isBrand: false, lucideIcon: Workflow },
+      { name: "Process Automation", slug: "process-automation", color: "#8B5CF6", isBrand: false, lucideIcon: Settings },
+      { name: "API Integration", slug: "api-integration", color: "#8B5CF6", isBrand: false, lucideIcon: Network },
+      { name: "Data Mapping & Transformation", slug: "data-mapping", color: "#8B5CF6", isBrand: false, lucideIcon: Layers },
     ],
   },
   {
-    id: "productivity-office",
-    title: "Productivity & Office",
-    description: "Designing workflows and documenting processes with modern office platforms.",
+    id: "virtual-assistance",
+    title: "Virtual Assistance",
+    description: "Workspace and productivity tools for organizing information, schedules, records, and daily operations.",
     icon: FileText,
     accentColor: "#10B981",
     tools: [
@@ -220,13 +211,15 @@ const operationalCategories: Category[] = [
       { name: "Google Drive", slug: "googledrive", color: "#4285F4", isBrand: true },
       { name: "Google Calendar", slug: "googlecalendar", color: "#4285F4", isBrand: true },
       { name: "Google Forms", slug: "googleforms", color: "#7248B9", isBrand: true },
-      { name: "Microsoft Office", slug: "microsoft", color: "#D83B01", isBrand: true },
+      { name: "Microsoft 365", slug: "microsoft", color: "#D83B01", isBrand: true },
+      { name: "HubSpot", slug: "hubspot", color: "#FF7A59", isBrand: true },
+      { name: "Airtable", slug: "airtable", color: "#18BFFF", isBrand: true },
     ],
   },
   {
-    id: "communication-design",
-    title: "Communication & Design",
-    description: "Managing asynchronous communications and crafting graphic layouts.",
+    id: "collaboration-design",
+    title: "Collaboration & Design",
+    description: "Tools for communication, team coordination, project collaboration, and visual content.",
     icon: MessageSquare,
     accentColor: "#F43F5E",
     tools: [
@@ -235,6 +228,10 @@ const operationalCategories: Category[] = [
       { name: "Zoom", slug: "zoom", color: "#2D8CFF", isBrand: true },
       { name: "Google Meet", slug: "googlemeet", color: "#00897B", isBrand: true },
       { name: "Canva", slug: "canva", color: "#00C4CC", isBrand: true },
+      { name: "ClickUp", slug: "clickup", color: "#7B68EE", isBrand: true },
+      { name: "Asana", slug: "asana", color: "#F06A6A", isBrand: true },
+      { name: "Trello", slug: "trello", color: "#0079BF", isBrand: true },
+      { name: "Notion", slug: "notion", color: "#FFFFFF", isBrand: true },
     ],
   },
 ];
@@ -263,7 +260,7 @@ export function Skills() {
           <SectionHeader
             label="Capabilities"
             title="Tech Stack & Toolkit"
-            description="A versatile set of technical and administrative capabilities designed to support smoother workflows, reliable systems, and efficient day-to-day operations."
+            description="A modern toolkit for building reliable systems and smoother workflows."
             headingId="skills-heading"
           />
         </FadeIn>
@@ -274,7 +271,7 @@ export function Skills() {
             <div className="flex items-center gap-2 mb-6">
               <span className="h-px w-6 bg-blue-500" />
               <h4 className="font-mono text-xs font-semibold tracking-wider text-blue-400 uppercase">
-                Tech Stack & Capabilities
+                Development & Systems
               </h4>
             </div>
           </FadeIn>
@@ -352,7 +349,7 @@ export function Skills() {
             <div className="flex items-center gap-2 mb-6">
               <span className="h-px w-6 bg-purple-500" />
               <h4 className="font-mono text-xs font-semibold tracking-wider text-purple-400 uppercase">
-                Workspace & Productivity Tools
+                Automation & Productivity
               </h4>
             </div>
           </FadeIn>

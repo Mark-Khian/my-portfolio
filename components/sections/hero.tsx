@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Briefcase, Mail, FileText } from "lucide-react";
-import Link from "next/link";
 
 import { HeroBackground } from "@/components/hero-background";
 import { Button } from "@/components/ui/button";
@@ -12,6 +11,7 @@ import { GlassCard } from "@/components/ui/glass-card";
 import { PortfolioTerminal } from "@/components/ui/portfolio-terminal";
 import { CvModal } from "@/components/ui/cv-modal";
 import { siteConfig } from "@/lib/site-config";
+import { cn } from "@/lib/utils";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -21,8 +21,23 @@ function getStaggerTransition(reducedMotion: boolean | null) {
 
 export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
   const [isCvModalOpen, setIsCvModalOpen] = useState(false);
+  const [highlightContact, setHighlightContact] = useState(false);
+  const highlightTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const prefersReducedMotion = useReducedMotion();
   const itemTransition = getStaggerTransition(prefersReducedMotion);
+
+  useEffect(() => {
+    const handleHighlight = () => {
+      setHighlightContact(true);
+      if (highlightTimeoutRef.current) clearTimeout(highlightTimeoutRef.current);
+      highlightTimeoutRef.current = setTimeout(() => {
+        setHighlightContact(false);
+      }, 2000);
+    };
+
+    window.addEventListener("highlight-contact", handleHighlight);
+    return () => window.removeEventListener("highlight-contact", handleHighlight);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -105,16 +120,18 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
                   whileHover={{ scale: 1.03 }} 
                   whileTap={{ scale: 0.97 }}
                 >
-                  <Button
-                    nativeButton={false}
-                    render={
-                      <Link href={`#${siteConfig.sections.services}`} className="flex w-full items-center justify-center gap-2">
-                        <Briefcase className="size-4" />
-                        <span>Services</span>
-                      </Link>
-                    }
-                    className="h-11 w-full rounded-full bg-blue-500 px-6 text-sm font-medium text-white hover:bg-blue-600"
-                  />
+                  <a
+                    href={`#${siteConfig.sections.services}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById(siteConfig.sections.services)?.scrollIntoView({ behavior: 'smooth' });
+                      window.history.pushState(null, '', `#${siteConfig.sections.services}`);
+                    }}
+                    className="flex h-11 w-full items-center justify-center gap-2 rounded-full bg-blue-500 px-6 text-sm font-medium text-white outline-none transition-all hover:bg-blue-600 focus-visible:ring-3 focus-visible:ring-ring/50"
+                  >
+                    <Briefcase className="size-4" />
+                    <span>Services</span>
+                  </a>
                 </motion.div>
                 
                 <motion.div 
@@ -125,7 +142,12 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
                   <Button
                     onClick={onConnectClick}
                     variant="outline"
-                    className="h-11 w-full flex items-center justify-center gap-1.5 cursor-pointer rounded-full px-2 sm:px-6 text-xs sm:text-sm font-medium border border-white/10 !bg-transparent hover:!bg-white/10 transition-colors"
+                    className={cn(
+                      "h-11 w-full flex items-center justify-center gap-1.5 cursor-pointer rounded-full px-2 sm:px-6 text-xs sm:text-sm font-medium border transition-all duration-300",
+                      highlightContact
+                        ? "border-blue-500 bg-blue-500/20 text-blue-400 shadow-[0_0_24px_rgba(59,130,246,0.3)]"
+                        : "border-white/10 !bg-transparent hover:!bg-white/10"
+                    )}
                   >
                     <Mail className="size-4" />
                     <span>Contact Me</span>
@@ -161,7 +183,7 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center justify-center md:flex"
+        className="pointer-events-none absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center justify-center md:flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={
@@ -170,10 +192,15 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
             : { delay: 0.9, duration: 0.5, ease: EASE }
         }
       >
-        <Link
+        <a
           href="#about"
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+            window.history.pushState(null, '', '#about');
+          }}
           aria-label="Scroll to about section"
-          className="group flex cursor-pointer flex-col items-center gap-4"
+          className="pointer-events-auto group flex cursor-pointer flex-col items-center gap-4"
         >
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-white/50 transition-colors group-hover:text-white/90">
             Scroll to Explore
@@ -186,7 +213,7 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
               aria-hidden="true"
             />
           </div>
-        </Link>
+        </a>
       </motion.div>
       <CvModal isOpen={isCvModalOpen} onClose={() => setIsCvModalOpen(false)} />
     </section>

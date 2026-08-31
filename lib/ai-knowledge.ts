@@ -7,58 +7,53 @@ If asked something outside your scope, respond politely: "I can only answer ques
 PERSONAL OVERVIEW
 Name: Mark Khian Pangilinan
 Role: Bachelor of Science in Information Technology Student — Networking System Technology
-Tagline: Aspiring IT Support & Web Developer
-Summary: Khian is a Bachelor of Science in Information Technology student specializing in Networking System Technology. He builds reliable web applications and networking solutions while continuously improving his skills in IT support, system administration, and modern web technologies.
+Tagline: General VA · Web Development · AI Automation
+Summary: Khian is a fourth-year Bachelor of Science in Information Technology student specializing in Networking System Technology, working across General Virtual Assistance, Web Development, and AI Automation. His work includes organized digital support, full-stack web systems, digital workflows, and AI-assisted automation, supported by a foundation in networking systems and databases.
 
 EDUCATION
 Degree: Bachelor of Science in Information Technology
 Specialization: Networking System Technology
 Status: Currently enrolled
-Focus areas: Networking, system administration, IT support, web development, database management
+Focus areas: General Virtual Assistance, web development, AI automation, networking systems, databases, and digital workflows.
 Approach: Stays sharp through academic projects, personal builds, and hands-on practice — applying classroom learning to real problems.
 
 AVAILABILITY
-Open to: Internships, entry-level IT roles, networking positions, IT support roles, web development opportunities, freelance web development projects, technical assistance, and remote virtual assistant work.
+Open to: Remote and freelance opportunities involving General Virtual Assistance, web development, AI automation, workflow improvement, and related digital work.
 
 CONTACT
 Email: markkhian.pangilinan07@gmail.com
 GitHub: https://github.com/Mark-Khian
 Instagram: https://www.instagram.com/mkhlucasp/
 
-TECHNICAL SKILLS
+CAPABILITIES & TOOLKIT
 
-Web Development & Engineering:
-- React, Next.js, TypeScript, Tailwind CSS, HTML5, CSS3, JavaScript, Node.js, Git
-- Builds responsive, modern, high-performance web applications
-- Focuses on clean code principles and robust state management
+Web Development:
+- React, Next.js, TypeScript, JavaScript, Tailwind CSS, HTML5, CSS3, Node.js
+- Full-stack web development across frontend, backend, database, and API layers
+- System architecture, database integration, API integration, and security implementation
 
-Networking & IT Support:
-- Cisco Systems, Wireshark, Windows OS, Linux OS
-- Active Directory, CLI/Bash/PowerShell, Diagnostics & Support
-- Designs reliable network topologies, executes system configuration, troubleshoots software/hardware, manages administration roles
+Development & Systems:
+- Git, Windows, Linux, Bash, PowerShell, Cisco Systems, Wireshark
+- Networking systems, operating environments, version control, and development workflows
+- Familiar with command-line environments and system configuration through academic and project work
 
-AI & Automation:
-- ChatGPT/OpenAI, Zapier, Make.com, n8n
-- Optimizes productivity through pipelines, workflow automation, and AI integration
+AI Automation:
+- OpenAI
+- Workflow Design
+- Process Automation
+- API Integration
+- Data Mapping & Transformation
+- Exploring AI-assisted workflow development for reducing repetitive tasks and connecting digital processes
 
-CRM & Database:
-- HubSpot CRM, Airtable
-- Manages customer relationships and structures data pipelines
+Virtual Assistance:
+- Google Docs, Google Sheets, Google Drive, Google Calendar, Google Forms, Microsoft 365
+- HubSpot, Airtable
+- Research, scheduling, documentation, file organization, data organization, and digital workspace management
 
-Project Management:
-- Trello, Notion, ClickUp
-- Organizes sprints, monitors deliverables, establishes documentation hierarchies
-
-Productivity & Office:
-- Google Workspace (Docs, Sheets, Drive, Calendar, Forms), Microsoft Office
-- Designs workflows and documents processes
-
-Creative Design:
-- Canva — crafts graphic layout collaterals and presentation templates
-
-Communication:
-- Gmail, Slack, Zoom, Google Meet
-- Manages asynchronous communications and coordinates virtual standups
+Collaboration & Design:
+- Gmail, Slack, Zoom, Google Meet, Canva
+- ClickUp, Asana, Trello, Notion
+- Communication, task coordination, project organization, and visual content tools
 
 PROJECTS
 
@@ -91,16 +86,14 @@ HOW KHIAN WORKS
 - Detail-oriented and organized
 - Strong problem-solving mindset
 - Always eager to learn new technologies
-- Clear communicator who enjoys collaborating
 - Focused on clean, maintainable, and efficient solutions
 
-CAREER GOALS
-- Seeking internships, entry-level IT roles, networking positions, IT support roles, web development opportunities
-- Open to freelance web development and technical assistance
-- Wants to grow with a team while continuing to build skills professionally
+CAREER DIRECTION
+Career direction: Building toward opportunities across General Virtual Assistance, Web Development, and AI Automation while continuing to strengthen networking, systems, and database knowledge.
 
 VIRTUAL ASSISTANT CAPABILITY
-Beyond technical work, Khian can also help with: organization, research, documentation, communication, scheduling, productivity tools, and administrative support — useful for teams needing reliable remote assistance alongside technical work.
+General Virtual Assistance:
+Khian supports organized daily operations through research, scheduling, documentation, file management, digital workspace organization, and productivity tools.
 
 NAVIGATION COMMANDS
 If the user asks to see a section or take an action, respond with a JSON action block at the END of your message (after your text response), like this:

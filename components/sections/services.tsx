@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ClipboardList, Layers, Wrench } from "lucide-react";
+import { ClipboardList, Layers, Workflow } from "lucide-react";
 
 import { FadeIn } from "@/components/motion/fade-in";
 import { SectionHeader } from "@/components/section-header";
@@ -13,13 +13,13 @@ import { useFineHover } from "@/lib/use-media-query";
 const SERVICE_ICONS = {
   "General Virtual Assistant": ClipboardList,
   "Full-Stack Development": Layers,
-  "Technical Support": Wrench,
+  "AI Automation": Workflow,
 } as const;
 
 const SERVICE_COLORS = {
   "General Virtual Assistant": "#10B981", // Emerald
   "Full-Stack Development": "#8B5CF6",    // Violet
-  "Technical Support": "#06B6D4",         // Cyan
+  "AI Automation": "#06B6D4",         // Cyan
 } as const;
 
 export function Services() {
@@ -36,7 +36,7 @@ export function Services() {
           <SectionHeader
             label="Services"
             title="What I Can Help With"
-            description="Practical support across administrative work, full-stack development, and technical tasks."
+            description="Helping you stay organized, build better, and work smarter."
             headingId="services-heading"
           />
         </FadeIn>

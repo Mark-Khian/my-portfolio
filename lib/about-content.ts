@@ -1,5 +1,4 @@
 import {
-  BookOpen,
   Briefcase,
   GraduationCap,
   Lightbulb,
@@ -18,55 +17,46 @@ export type AboutTrait = {
 
 export const aboutContent = {
   label: "About",
-  title: "Turning technical skills into practical solutions.",
+  title: "Building digital solutions beyond the interface.",
   intro:
-    "I'm a Bachelor of Science in Information Technology student specializing in Networking System Technology — focused on turning curiosity into practical skills through projects, practice, and persistence.",
+    "I’m a Bachelor of Science in Information Technology student specializing in Networking System Technology, building web systems, digital workflows, and AI-powered automation.",
   academic: {
     title: "Academic Background",
     icon: GraduationCap,
     paragraphs: [
-      "Fourth-year Bachelor of Science in Information Technology student specializing in Networking System Technology, with hands-on experience in networking, systems, web development, and technical projects.",
+      "Fourth-year Bachelor of Science in Information Technology student specializing in Networking System Technology, with a foundation across networking systems, full-stack development, databases, and digital technologies.",
     ],
   },
   journey: {
     title: "My Journey",
     icon: Lightbulb,
     paragraphs: [
-      "Adaptable across different workflows and technology tools, with a practical approach to understanding systems, solving problems, and getting work done efficiently.",
+      "My work has grown from networking and web development into building digital systems, improving workflows, and exploring how AI automation can simplify repetitive processes.",
     ],
   },
   howIWork: {
     title: "How I Work",
     icon: Sparkles,
     traits: [
-      { icon: BookOpen, text: "Quick to understand new tools and systems" },
-      { icon: Layers, text: "Adaptable to different workflows" },
+      { icon: Layers, text: "Structured approach to tasks and workflows" },
       { icon: CheckCircle, text: "Organized and detail-oriented" },
-      {
-        icon: Lightbulb,
-        text: "Practical approach to problem-solving",
-      },
-      {
-        icon: MessageSquare,
-        text: "Clear and straightforward communication",
-      },
-      {
-        icon: ShieldCheck,
-        text: "Reliable and consistent with assigned tasks",
-      },
+      { icon: MessageSquare, text: "Clear task updates and documentation" },
+      { icon: Briefcase, text: "Adaptable to different workflows" },
+      { icon: Lightbulb, text: "Analytical approach to problem-solving" },
+      { icon: ShieldCheck, text: "Consistent with deadlines and deliverables" },
     ] satisfies AboutTrait[],
   },
   careerGoals: {
-    title: "Career Goals",
+    title: "What I’m Building Toward",
     icon: Briefcase,
     paragraphs: [
-      "I aim to contribute reliable, practical work that improves workflows and makes day-to-day operations easier, while continuously strengthening my professional and technical experience.",
+      "Building toward creating organized operations, secure web systems, and smarter automation that improve how work gets done.",
     ],
   },
   virtualAssistant: {
     label: "Additional capability",
     title: "General Virtual Assistant",
     description:
-      "I provide reliable remote support for organization, research, documentation, scheduling, communication, and day-to-day administrative tasks using modern productivity tools.",
+      "Reliable support for daily operations through organization, research, scheduling, documentation, and digital workspace management using modern productivity tools.",
   },
 } as const;
