@@ -108,12 +108,22 @@ export function PortfolioTerminal({ onConnectClick }: { onConnectClick?: () => v
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to bottom on history change
+  const isScrolledUp = useRef(false);
+
+  // Scroll to bottom on history change unless user manually scrolled up
   useEffect(() => {
-    if (terminalRef.current) {
+    if (terminalRef.current && !isScrolledUp.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
   }, [history, demoPhase, demoTyped]);
+
+  // Track manual scrolling
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.currentTarget;
+    // 10px threshold for being at the bottom
+    const isAtBottom = target.scrollHeight - target.scrollTop - target.clientHeight <= 10;
+    isScrolledUp.current = !isAtBottom;
+  };
 
   // Demo sequence
   useEffect(() => {
@@ -159,6 +169,8 @@ export function PortfolioTerminal({ onConnectClick }: { onConnectClick?: () => v
   const handleCommand = (cmd: string) => {
     const normalizedCmd = cmd.trim().toLowerCase();
     if (!normalizedCmd) return;
+
+    isScrolledUp.current = false; // Reset on new command
 
     if (normalizedCmd === "clear") {
       setHistory([]);
@@ -206,7 +218,7 @@ export function PortfolioTerminal({ onConnectClick }: { onConnectClick?: () => v
 
   return (
     <div
-      className="mx-auto flex h-[340px] xl:h-full w-full max-w-lg flex-col overflow-hidden rounded-xl border border-white/10 bg-black/40 font-mono text-sm shadow-2xl backdrop-blur-md focus-within:border-white/20 transition-colors"
+      className="mx-auto flex h-[340px] xl:h-[380px] min-h-0 w-full max-w-lg flex-col overflow-hidden rounded-xl border border-white/10 bg-black/40 font-mono text-sm shadow-2xl backdrop-blur-md focus-within:border-white/20 transition-colors"
       onClick={handleTerminalClick}
       onKeyDown={stopDemo}
     >
@@ -225,7 +237,9 @@ export function PortfolioTerminal({ onConnectClick }: { onConnectClick?: () => v
       {/* Body */}
       <div
         ref={terminalRef}
-        className="flex-1 flex-col flex gap-4 overflow-y-auto p-4 text-foreground/80 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10"
+        onScroll={handleScroll}
+        data-lenis-prevent="true"
+        className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 text-foreground/80 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 space-y-4"
       >
         {/* History */}
         {activeHistory.map((item, i) => (

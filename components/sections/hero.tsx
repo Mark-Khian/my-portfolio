@@ -175,7 +175,7 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
         </div>
 
         <motion.div 
-          className="xl:col-span-4 mt-8 xl:mt-0 w-full flex justify-end"
+          className="xl:col-span-4 mt-8 xl:mt-0 w-full flex justify-end self-start min-h-0"
           variants={itemVariants}
         >
           <PortfolioTerminal onConnectClick={onConnectClick} />
