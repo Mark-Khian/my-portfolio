@@ -28,11 +28,11 @@ const getCommandOutput = (cmd: string): React.ReactNode => {
         <div className="flex flex-col gap-1 whitespace-pre-wrap">
           <div>Available commands:</div>
           <div className="mt-1 grid grid-cols-[80px_1fr] gap-x-2 gap-y-1">
-            <span className="text-blue-400">about</span><span>Short introduction</span>
-            <span className="text-blue-400">skills</span><span>View core capabilities</span>
-            <span className="text-blue-400">services</span><span>View offered services</span>
-            <span className="text-blue-400">contact</span><span>Get in touch</span>
-            <span className="text-blue-400">clear</span><span>Clear terminal</span>
+            <span className="text-blue-600 dark:text-blue-400">about</span><span>Short introduction</span>
+            <span className="text-blue-600 dark:text-blue-400">skills</span><span>View core capabilities</span>
+            <span className="text-blue-600 dark:text-blue-400">services</span><span>View offered services</span>
+            <span className="text-blue-600 dark:text-blue-400">contact</span><span>Get in touch</span>
+            <span className="text-blue-600 dark:text-blue-400">clear</span><span>Clear terminal</span>
           </div>
         </div>
       );
@@ -49,20 +49,20 @@ const getCommandOutput = (cmd: string): React.ReactNode => {
     case "skills":
       return (
         <div className="flex flex-col gap-1 whitespace-pre-wrap">
-          <div className="font-semibold text-blue-400">General VA</div>
+          <div className="font-semibold text-blue-600 dark:text-blue-400">General VA</div>
           <div className="text-muted-foreground">→ Email & Calendar Management</div>
           <div className="text-muted-foreground">→ Data Entry & File Organization</div>
           <div className="text-muted-foreground">→ Online Research</div>
           <div className="text-muted-foreground">→ Google Workspace & Microsoft 365</div>
           <br />
-          <div className="font-semibold text-blue-400">Web Development</div>
+          <div className="font-semibold text-blue-600 dark:text-blue-400">Web Development</div>
           <div className="text-muted-foreground">→ System Architecture</div>
           <div className="text-muted-foreground">→ Modern Frameworks</div>
           <div className="text-muted-foreground">→ Node.js & Express</div>
           <div className="text-muted-foreground">→ Database Integration</div>
           <div className="text-muted-foreground">→ API Integration</div>
           <br />
-          <div className="font-semibold text-blue-400">AI Automation</div>
+          <div className="font-semibold text-blue-600 dark:text-blue-400">AI Automation</div>
           <div className="text-muted-foreground">→ Workflow Design</div>
           <div className="text-muted-foreground">→ Process Automation</div>
           <div className="text-muted-foreground">→ AI-Assisted Workflows</div>
@@ -77,7 +77,7 @@ const getCommandOutput = (cmd: string): React.ReactNode => {
       return (
         <div>
           Command not found: {normalizedCmd}<br />
-          Type <span className="text-blue-400">help</span> to see available commands.
+          Type <span className="text-blue-600 dark:text-blue-400">help</span> to see available commands.
         </div>
       );
   }
@@ -218,12 +218,12 @@ export function PortfolioTerminal({ onConnectClick }: { onConnectClick?: () => v
 
   return (
     <div
-      className="mx-auto flex h-[340px] xl:h-[380px] min-h-0 w-full max-w-lg flex-col overflow-hidden rounded-xl border border-white/10 bg-black/40 font-mono text-sm shadow-2xl backdrop-blur-md focus-within:border-white/20 transition-colors"
+      className="mx-auto flex h-[340px] xl:h-[380px] min-h-0 w-full max-w-lg flex-col overflow-hidden rounded-xl border border-border/80 dark:border-white/10 bg-background/95 dark:bg-black/40 font-mono text-sm shadow-xl dark:shadow-2xl backdrop-blur-md focus-within:border-foreground/30 dark:focus-within:border-white/20 transition-colors"
       onClick={handleTerminalClick}
       onKeyDown={stopDemo}
     >
       {/* Header */}
-      <div className="flex items-center border-b border-white/5 bg-white/5 px-4 py-3 relative">
+      <div className="flex items-center border-b border-border/50 dark:border-white/5 bg-foreground/[0.02] dark:bg-white/5 px-4 py-3 relative">
         <div className="flex gap-2 z-10">
           <div className="size-3 rounded-full bg-[#ff5f56]" />
           <div className="size-3 rounded-full bg-[#ffbd2e]" />
@@ -239,16 +239,16 @@ export function PortfolioTerminal({ onConnectClick }: { onConnectClick?: () => v
         ref={terminalRef}
         onScroll={handleScroll}
         data-lenis-prevent="true"
-        className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 text-foreground/80 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 space-y-4"
+        className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 text-foreground/80 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground/10 dark:scrollbar-thumb-white/10 space-y-4"
       >
         {/* History */}
         {activeHistory.map((item, i) => (
           <div key={i} className="flex flex-col gap-2">
             <div className="flex gap-2">
               <div className="shrink-0 flex gap-1.5">
-                <span className="text-blue-400 font-medium">khian@portfolio</span>
+                <span className="text-blue-600 dark:text-blue-400 font-medium">khian@portfolio</span>
                 <span className="text-muted-foreground">~</span>
-                <span className="text-white/70">%</span>
+                <span className="text-foreground/50 dark:text-white/70">%</span>
               </div>
               <span className="break-all text-foreground/90">{item.command}</span>
             </div>
@@ -263,9 +263,9 @@ export function PortfolioTerminal({ onConnectClick }: { onConnectClick?: () => v
           <div className="flex flex-col gap-2">
             <div className="flex gap-2">
               <div className="shrink-0 flex gap-1.5">
-                <span className="text-blue-400 font-medium">khian@portfolio</span>
+                <span className="text-blue-600 dark:text-blue-400 font-medium">khian@portfolio</span>
                 <span className="text-muted-foreground">~</span>
-                <span className="text-white/70">%</span>
+                <span className="text-foreground/50 dark:text-white/70">%</span>
               </div>
               <span className="text-foreground/90">
                 {demoPhase === "typing" ? demoTyped : ""}
@@ -279,9 +279,9 @@ export function PortfolioTerminal({ onConnectClick }: { onConnectClick?: () => v
         {!demoMode && (
           <form onSubmit={onSubmit} className="flex items-center gap-2">
             <div className="shrink-0 flex gap-1.5">
-              <span className="text-blue-400 font-medium">khian@portfolio</span>
+              <span className="text-blue-600 dark:text-blue-400 font-medium">khian@portfolio</span>
               <span className="text-muted-foreground">~</span>
-              <span className="text-white/70">%</span>
+              <span className="text-foreground/50 dark:text-white/70">%</span>
             </div>
             <input
               ref={inputRef}
@@ -289,7 +289,7 @@ export function PortfolioTerminal({ onConnectClick }: { onConnectClick?: () => v
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onFocus={stopDemo}
-              className="min-w-0 flex-1 bg-transparent p-0 border-none outline-none focus:ring-0 text-foreground/90 caret-blue-400"
+              className="min-w-0 flex-1 bg-transparent p-0 border-none outline-none focus:ring-0 text-foreground/90 caret-blue-600 dark:caret-blue-400"
               spellCheck={false}
               autoComplete="off"
               aria-label="Portfolio terminal command input"

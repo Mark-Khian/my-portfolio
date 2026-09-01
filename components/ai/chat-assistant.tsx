@@ -11,10 +11,11 @@ import { useIsMounted } from "@/hooks/use-is-mounted";
 
 // ── Suggested starter questions ───────────────────────────────────────────────
 const SUGGESTIONS = [
-  "What projects has Khian built?",
-  "What's his networking background?",
-  "What tech stack does he use?",
-  "Is he open to internships?",
+  "What services does Khian offer?",
+  "What kind of websites can he build?",
+  "Does he work with AI automation?",
+  "What’s Khian’s networking background?",
+  "Is he open to freelance or internships?",
   "How can I contact Khian?",
 ];
 
@@ -318,10 +319,10 @@ export function ChatAssistant() {
                 </span>
                 <div>
                   <p className="text-sm font-semibold leading-none text-foreground">
-                    Portfolio Assistant
+                    Khian’s Assistant
                   </p>
                   <p className="mt-0.5 text-[10px] text-muted-foreground">
-                    Knows everything about Khian
+                    Here to help with your questions.
                   </p>
                 </div>
               </div>
@@ -406,7 +407,7 @@ export function ChatAssistant() {
                 >
                   <div className="flex items-center gap-2 text-foreground font-medium">
                     <Bot className="size-4 text-blue-600 dark:text-blue-400" />
-                    Portfolio Assistant is temporarily unavailable.
+                    Khian’s Assistant is temporarily unavailable.
                   </div>
                   <p className="text-xs leading-relaxed">
                     The AI assistant is currently under maintenance. Please try again later or use the contact options below to reach me directly.
@@ -493,7 +494,7 @@ export function ChatAssistant() {
         whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
       >
         <Bot className="size-4 text-blue-600 dark:text-blue-400" aria-hidden="true" />
-        Ask AI
+        Ask Khian
       </motion.button>
 
       {mounted && createPortal(overlayAndPanel, document.body)}

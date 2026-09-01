@@ -92,7 +92,7 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
 
               <motion.div variants={itemVariants} className="space-y-1.5">
                 <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl lg:leading-[1.05] xl:whitespace-nowrap">
-                  {siteConfig.name}
+                  <span className="animate-shine-sweep bg-clip-text text-transparent">{siteConfig.name}</span>
                 </h1>
 
                 <p className="font-mono text-sm text-blue-600 dark:text-blue-400 sm:text-base">

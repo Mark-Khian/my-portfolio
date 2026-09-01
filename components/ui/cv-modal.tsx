@@ -9,8 +9,8 @@ import { siteConfig } from "@/lib/site-config";
 import { useIsMounted } from "@/hooks/use-is-mounted";
 
 // When the real CV is available, set this to the PDF path (e.g. "/mark_khian_cv.pdf")
-const cvFile: string | null = "/Mark_Khian_CV_v4.png";
-const cvPdfFile: string | null = "/Mark_Khian_Pangilinan_CV_v3.pdf";
+const cvFile: string | null = null;
+const cvPdfFile: string | null = null;
 
 interface CvModalProps {
   isOpen: boolean;
@@ -310,12 +310,12 @@ export function CvModal({ isOpen, onClose }: CvModalProps) {
               ) : (
                 <div className="flex max-w-sm flex-col items-center gap-4">
                   <div className="flex size-16 items-center justify-center rounded-full border border-border dark:border-white/5 bg-foreground/[0.02] dark:bg-white/[0.02]">
-                    <FileText className="size-8 text-muted-foreground/50" />
+                    <span className="font-mono text-xl font-bold text-muted-foreground/50">404</span>
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-lg font-medium text-foreground">CV coming soon</h3>
+                    <h3 className="text-lg font-medium text-foreground">CV Not Found</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">
-                      My updated curriculum vitae is currently being prepared and will be available here soon.
+                      The CV is currently being updated.
                     </p>
                   </div>
                 </div>
