@@ -29,7 +29,7 @@ function ContentCard({
       as="article"
       className={cn(
         "flex h-full flex-col p-6 sm:p-8",
-        variant === "muted" && "border-dashed border-white/8",
+        variant === "muted" && "border-dashed border-border dark:border-white/8",
         className,
       )}
     >
@@ -38,8 +38,8 @@ function ContentCard({
           className={cn(
             "flex size-9 items-center justify-center rounded-lg border",
             variant === "default"
-              ? "border-blue-500/20 bg-blue-500/10 text-blue-400"
-              : "border-white/10 bg-white/5 text-muted-foreground",
+              ? "border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400"
+              : "border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5 text-muted-foreground",
           )}
         >
           <Icon className="size-4" aria-hidden="true" />
@@ -111,7 +111,7 @@ export function About() {
                     className="flex items-start gap-3 text-sm text-muted-foreground sm:text-base"
                   >
                     <TraitIcon
-                      className="mt-0.5 size-4 shrink-0 text-blue-400"
+                      className="mt-0.5 size-4 shrink-0 text-blue-600 dark:text-blue-400"
                       aria-hidden="true"
                     />
                     <span>{text}</span>

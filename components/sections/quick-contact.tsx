@@ -82,7 +82,7 @@ function ContactCard({
         {/* Platform icon */}
         <span
           className={cn(
-            "flex shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-all duration-300",
+            "flex shrink-0 items-center justify-center rounded-xl border border-foreground/10 dark:border-white/10 bg-foreground/5 dark:bg-white/5 transition-all duration-300",
             iconSize,
           )}
           style={{
@@ -100,7 +100,7 @@ function ContactCard({
           <span className="text-[10px] font-mono font-semibold tracking-wider text-muted-foreground uppercase block leading-none">
             {option.label}
           </span>
-          <span className="mt-1 text-sm font-semibold text-foreground group-hover:text-white transition-colors block leading-tight truncate">
+          <span className="mt-1 text-sm font-semibold text-foreground dark:group-hover:text-white group-hover:text-foreground transition-colors block leading-tight truncate">
             {option.value}
           </span>
           <span className="mt-0.5 text-xs text-muted-foreground block leading-snug">
@@ -115,7 +115,7 @@ function ContactCard({
   if (option.copyable) {
     return (
       <motion.div
-        className="relative flex items-center justify-between rounded-2xl border border-white/5 bg-white/[0.01] p-4 outline-none transition-all duration-300 group hover:bg-white/[0.03]"
+        className="relative flex items-center justify-between rounded-2xl border border-foreground/5 dark:border-white/5 bg-foreground/[0.01] dark:bg-white/[0.01] p-4 outline-none transition-all duration-300 group hover:bg-foreground/[0.03] dark:hover:bg-white/[0.03]"
         style={{
           borderColor: hovered ? `${option.color}25` : undefined,
           boxShadow: hovered ? `0 0 20px ${option.color}08` : undefined,
@@ -151,7 +151,7 @@ function ContactCard({
               "relative flex size-8 items-center justify-center rounded-lg border transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50",
               copyState === "copied"
                 ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-400"
-                : "border-white/10 bg-white/5 text-muted-foreground hover:border-white/20 hover:text-foreground",
+                : "border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5 text-muted-foreground hover:border-foreground/20 dark:hover:border-white/20 hover:text-foreground",
             )}
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -186,7 +186,7 @@ function ContactCard({
             rel="noopener noreferrer"
             tabIndex={-1}
             aria-hidden="true"
-            className="text-muted-foreground group-hover:text-white transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="text-muted-foreground dark:group-hover:text-white group-hover:text-foreground transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           >
             <ArrowUpRight className="size-4" />
           </a>
@@ -201,7 +201,7 @@ function ContactCard({
       href={option.link}
       target={option.target}
       rel="noopener noreferrer"
-      className="relative flex items-center justify-between rounded-2xl border border-white/5 bg-white/[0.01] p-4 outline-none transition-all duration-300 group hover:bg-white/[0.03]"
+      className="relative flex items-center justify-between rounded-2xl border border-foreground/5 dark:border-white/5 bg-foreground/[0.01] dark:bg-white/[0.01] p-4 outline-none transition-all duration-300 group hover:bg-foreground/[0.03] dark:hover:bg-white/[0.03]"
       aria-label={option.slug === "whatsapp" ? "Message Mark Khian on WhatsApp" : `Open ${option.label}`}
       title={option.slug === "whatsapp" ? "Message Mark Khian on WhatsApp" : undefined}
       style={{
@@ -216,7 +216,7 @@ function ContactCard({
     >
       {cardContent}
 
-      <span className="text-muted-foreground group-hover:text-white transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0 ml-2">
+      <span className="text-muted-foreground dark:group-hover:text-white group-hover:text-foreground transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0 ml-2">
         <ArrowUpRight className="size-4" />
       </span>
     </motion.a>
@@ -439,7 +439,7 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.95 }}
             transition={desktopTransition}
-            className="relative overflow-visible rounded-3xl border border-white/10 bg-[#09090B]/85 p-8 shadow-2xl backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
+            className="relative overflow-visible rounded-3xl border border-border dark:border-white/10 bg-background/90 dark:bg-[#09090B]/85 p-8 shadow-xl dark:shadow-2xl backdrop-blur-2xl dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-title"
@@ -448,7 +448,7 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
             {/* Close */}
             <button
               onClick={onClose}
-              className="absolute right-6 top-6 flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground transition-all duration-300 hover:rotate-90 hover:border-white/20 hover:text-foreground focus-visible:ring-2 focus-visible:ring-blue-500/50"
+              className="absolute right-6 top-6 flex size-8 items-center justify-center rounded-full border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5 text-muted-foreground transition-all duration-300 hover:rotate-90 hover:border-foreground/20 dark:hover:border-white/20 hover:text-foreground focus-visible:ring-2 focus-visible:ring-blue-500/50"
               aria-label="Close contact hub"
             >
               <X className="size-4" />
@@ -495,19 +495,19 @@ export function QuickContact({ isOpen, onClose }: QuickContactProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "100%" }}
             transition={mobileTransition}
-            className="relative rounded-t-3xl border-t border-x border-white/10 bg-[#09090B] p-6 pb-12 shadow-2xl backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
+            className="relative rounded-t-3xl border-t border-x border-border dark:border-white/10 bg-background dark:bg-[#09090B] p-6 pb-12 shadow-2xl backdrop-blur-xl dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-title-mobile"
             aria-describedby="contact-description-mobile"
           >
             {/* Drag indicator */}
-            <div className="mx-auto mb-5 h-1.5 w-12 rounded-full bg-white/20" aria-hidden="true" />
+            <div className="mx-auto mb-5 h-1.5 w-12 rounded-full bg-foreground/20 dark:bg-white/20" aria-hidden="true" />
 
             {/* Close */}
             <button
               onClick={onClose}
-              className="absolute right-6 top-6 flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground focus-visible:ring-2 focus-visible:ring-blue-500/50"
+              className="absolute right-6 top-6 flex size-8 items-center justify-center rounded-full border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5 text-muted-foreground focus-visible:ring-2 focus-visible:ring-blue-500/50"
               aria-label="Close contact hub"
             >
               <X className="size-4" />

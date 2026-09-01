@@ -5,10 +5,10 @@ export function ProjectGallery({ gallery }: { gallery: ProjectMedia[] }) {
 
   return (
     <div className="mt-16 space-y-6">
-      <h3 className="text-xl font-bold tracking-tight text-white/90">Project Gallery</h3>
+      <h3 className="text-xl font-bold tracking-tight text-foreground dark:text-white/90">Project Gallery</h3>
       <div className="grid gap-6">
         {gallery.map((media) => (
-          <figure key={media.displayOrder} className="overflow-hidden rounded-lg border border-white/10 bg-white/5 p-2 transition-colors hover:border-white/20">
+          <figure key={media.displayOrder} className="overflow-hidden rounded-lg border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5 p-2 transition-colors hover:border-foreground/30 dark:hover:border-white/20">
             <a 
               href={media.url} 
               target="_blank" 
@@ -24,7 +24,7 @@ export function ProjectGallery({ gallery }: { gallery: ProjectMedia[] }) {
               />
             </a>
             {media.caption && (
-              <figcaption className="mt-3 px-2 pb-1 text-sm text-zinc-400">
+              <figcaption className="mt-3 px-2 pb-1 text-sm text-muted-foreground dark:text-zinc-400">
                 {media.caption}
               </figcaption>
             )}

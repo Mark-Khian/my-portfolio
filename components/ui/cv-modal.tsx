@@ -165,13 +165,13 @@ export function CvModal({ isOpen, onClose }: CvModalProps) {
             aria-modal="true"
             aria-labelledby="cv-modal-title"
             data-lenis-prevent
-            className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0c0c0f] shadow-2xl"
+            className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-border dark:border-white/10 bg-background dark:bg-[#0c0c0f] shadow-2xl"
             style={{ height: "min(85vh, 900px)" }}
           >
             {/* Header */}
-            <div className="flex shrink-0 items-center justify-between border-b border-white/10 px-4 py-3 sm:px-6">
+            <div className="flex shrink-0 items-center justify-between border-b border-border dark:border-white/10 px-4 py-3 sm:px-6">
               <div className="flex items-center gap-3">
-                <div className="flex size-8 items-center justify-center rounded-full bg-blue-500/10 text-blue-400">
+                <div className="flex size-8 items-center justify-center rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
                   <FileText className="size-4" />
                 </div>
                 <div>
@@ -184,8 +184,8 @@ export function CvModal({ isOpen, onClose }: CvModalProps) {
               <div className="flex items-center gap-2">
                 {/* Zoom Controls */}
                 {cvFile && !cvFile.toLowerCase().endsWith('.pdf') && (
-                  <div className="hidden sm:flex items-center gap-1 mr-2 rounded-lg bg-white/5 p-1 border border-white/5">
-                    <span className="hidden md:inline-block px-2 text-[10px] text-muted-foreground/60 border-r border-white/10 mr-1 pr-3 select-none">
+                  <div className="hidden sm:flex items-center gap-1 mr-2 rounded-lg bg-foreground/5 dark:bg-white/5 p-1 border border-border dark:border-white/5">
+                    <span className="hidden md:inline-block px-2 text-[10px] text-muted-foreground/60 border-r border-border dark:border-white/10 mr-1 pr-3 select-none">
                       Scroll to zoom &middot; Drag to pan
                     </span>
 
@@ -193,7 +193,7 @@ export function CvModal({ isOpen, onClose }: CvModalProps) {
                       type="button"
                       onClick={() => setScale(s => Math.max(1, s - 0.25))}
                       disabled={scale <= 1}
-                      className="flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground disabled:opacity-50 disabled:hover:bg-transparent"
+                      className="flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-foreground/10 dark:hover:bg-white/10 hover:text-foreground disabled:opacity-50 disabled:hover:bg-transparent"
                       title="Zoom Out"
                     >
                       <ZoomOut className="size-4" />
@@ -207,13 +207,13 @@ export function CvModal({ isOpen, onClose }: CvModalProps) {
                       type="button"
                       onClick={() => setScale(s => Math.min(2.5, s + 0.25))}
                       disabled={scale >= 2.5}
-                      className="flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground disabled:opacity-50 disabled:hover:bg-transparent"
+                      className="flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-foreground/10 dark:hover:bg-white/10 hover:text-foreground disabled:opacity-50 disabled:hover:bg-transparent"
                       title="Zoom In"
                     >
                       <ZoomIn className="size-4" />
                     </button>
 
-                    <div className="mx-0.5 h-3 w-px bg-white/10" />
+                    <div className="mx-0.5 h-3 w-px bg-foreground/10 dark:bg-white/10" />
 
                     <button
                       type="button"
@@ -223,7 +223,7 @@ export function CvModal({ isOpen, onClose }: CvModalProps) {
                         panY.set(0);
                       }}
                       disabled={scale === 1}
-                      className="flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground disabled:opacity-50 disabled:hover:bg-transparent"
+                      className="flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-foreground/10 dark:hover:bg-white/10 hover:text-foreground disabled:opacity-50 disabled:hover:bg-transparent"
                       title="Reset Zoom"
                     >
                       <RotateCcw className="size-3.5" />
@@ -246,19 +246,19 @@ export function CvModal({ isOpen, onClose }: CvModalProps) {
                     "flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:text-sm",
                     cvPdfFile
                       ? "bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
-                      : "cursor-not-allowed bg-white/5 text-muted-foreground"
+                      : "cursor-not-allowed bg-foreground/5 dark:bg-white/5 text-muted-foreground"
                   )}
                 >
                   <Download className="size-3.5 sm:size-4" />
                   <span className="hidden sm:inline">Download CV</span>
                   <span className="sm:hidden">Download</span>
                 </button>
-                <div className="mx-1 h-4 w-px bg-white/10" />
+                <div className="mx-1 h-4 w-px bg-foreground/10 dark:bg-white/10" />
                 <button
                   type="button"
                   onClick={onClose}
                   aria-label="Close modal"
-                  className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                  className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-foreground/5 dark:hover:bg-white/5 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                 >
                   <X className="size-4 sm:size-5" />
                 </button>
@@ -268,7 +268,7 @@ export function CvModal({ isOpen, onClose }: CvModalProps) {
             {/* Body */}
             <div
               ref={containerRef}
-              className="flex flex-1 flex-col items-center justify-center bg-black/20 p-6 text-center overflow-hidden relative"
+              className="flex flex-1 flex-col items-center justify-center bg-muted/50 dark:bg-black/20 p-6 text-center overflow-hidden relative"
             >
               {cvFile ? (
                 <div className="flex h-full w-full items-center justify-center rounded-lg relative">
@@ -309,7 +309,7 @@ export function CvModal({ isOpen, onClose }: CvModalProps) {
                 </div>
               ) : (
                 <div className="flex max-w-sm flex-col items-center gap-4">
-                  <div className="flex size-16 items-center justify-center rounded-full border border-white/5 bg-white/[0.02]">
+                  <div className="flex size-16 items-center justify-center rounded-full border border-border dark:border-white/5 bg-foreground/[0.02] dark:bg-white/[0.02]">
                     <FileText className="size-8 text-muted-foreground/50" />
                   </div>
                   <div className="space-y-2">

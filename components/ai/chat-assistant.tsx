@@ -75,7 +75,7 @@ function MessageBubble({
       {!isUser && (
         <span
           aria-hidden="true"
-          className="mr-2 mt-1 flex size-6 shrink-0 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400"
+          className="mr-2 mt-1 flex size-6 shrink-0 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400"
         >
           <Bot className="size-3.5" />
         </span>
@@ -85,7 +85,7 @@ function MessageBubble({
           "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
           isUser
             ? "rounded-tr-sm bg-blue-500/20 text-foreground"
-            : "rounded-tl-sm border border-white/8 bg-white/[0.04] text-foreground",
+            : "rounded-tl-sm border border-border dark:border-white/8 bg-foreground/[0.04] dark:bg-white/[0.04] text-foreground",
         )}
       >
         {message.content.split("\n").map((line, i) => (
@@ -105,11 +105,11 @@ function TypingIndicator() {
     <div className="flex items-center gap-2">
       <span
         aria-hidden="true"
-        className="flex size-6 shrink-0 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400"
+        className="flex size-6 shrink-0 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400"
       >
         <Bot className="size-3.5" />
       </span>
-      <div className="flex items-center gap-1 rounded-2xl rounded-tl-sm border border-white/8 bg-white/[0.04] px-3.5 py-3">
+      <div className="flex items-center gap-1 rounded-2xl rounded-tl-sm border border-border dark:border-white/8 bg-foreground/[0.04] dark:bg-white/[0.04] px-3.5 py-3">
         {[0, 1, 2].map((i) => (
           <motion.span
             key={i}
@@ -305,15 +305,15 @@ export function ChatAssistant() {
             transition={{ duration: prefersReducedMotion ? 0 : 0.3, ease: activeEase }}
             className={cn(
               "fixed bottom-20 right-6 z-50 flex w-[min(380px,calc(100vw-3rem))] flex-col",
-              "rounded-2xl border border-white/[0.12] bg-[#0c0c0f]/95 backdrop-blur-2xl [@media(pointer:coarse)]:bg-[#0c0c0f]/98 [@media(pointer:coarse)]:backdrop-blur-none",
-              "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),inset_0_0_0_1px_rgba(255,255,255,0.04),0_24px_64px_rgba(0,0,0,0.7),0_0_0_1px_rgba(0,0,0,0.5)]",
+              "rounded-2xl border border-border dark:border-white/[0.12] bg-background/95 dark:bg-[#0c0c0f]/95 backdrop-blur-2xl [@media(pointer:coarse)]:bg-background/98 dark:[@media(pointer:coarse)]:bg-[#0c0c0f]/98",
+              "shadow-2xl dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07),inset_0_0_0_1px_rgba(255,255,255,0.04),0_24px_64px_rgba(0,0,0,0.7),0_0_0_1px_rgba(0,0,0,0.5)]",
             )}
             style={{ height: "min(520px, calc(100svh - 6rem))" }}
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-white/8 px-4 py-3">
+            <div className="flex items-center justify-between border-b border-border dark:border-white/8 px-4 py-3">
               <div className="flex items-center gap-2.5">
-                <span className="flex size-7 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400">
+                <span className="flex size-7 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400">
                   <Bot className="size-3.5" aria-hidden="true" />
                 </span>
                 <div>
@@ -372,8 +372,8 @@ export function ChatAssistant() {
                       type="button"
                       onClick={() => sendMessage(q)}
                       className={cn(
-                        "rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-left text-xs text-muted-foreground",
-                        "transition-all duration-200 hover:border-blue-500/30 hover:bg-blue-500/8 hover:text-foreground",
+                        "rounded-full border border-border dark:border-white/10 bg-foreground/[0.03] dark:bg-white/[0.03] px-3 py-1.5 text-left text-xs text-muted-foreground",
+                        "transition-all duration-200 hover:border-blue-500/30 hover:bg-foreground/[0.06] dark:hover:bg-blue-500/8 hover:text-foreground",
                         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50",
                       )}
                     >
@@ -405,7 +405,7 @@ export function ChatAssistant() {
                   className="flex flex-col gap-3 rounded-xl border border-blue-500/20 bg-blue-500/5 px-4 py-3.5 text-sm text-muted-foreground"
                 >
                   <div className="flex items-center gap-2 text-foreground font-medium">
-                    <Bot className="size-4 text-blue-400" />
+                    <Bot className="size-4 text-blue-600 dark:text-blue-400" />
                     Portfolio Assistant is temporarily unavailable.
                   </div>
                   <p className="text-xs leading-relaxed">
@@ -417,7 +417,7 @@ export function ChatAssistant() {
                       setIsOpen(false);
                       window.dispatchEvent(new Event("open-contact"));
                     }}
-                    className="mt-1 flex w-full items-center justify-center rounded-lg border border-white/10 bg-white/5 py-2 text-xs font-medium text-foreground transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                    className="mt-1 flex w-full items-center justify-center rounded-lg border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5 py-2 text-xs font-medium text-foreground transition-colors hover:bg-foreground/10 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
                     Contact Me
                   </button>
@@ -428,14 +428,14 @@ export function ChatAssistant() {
             </div>
 
             {/* Input */}
-            <div className="border-t border-white/8 p-3">
-              <div className="flex items-end gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 focus-within:border-blue-500/40 transition-colors duration-200">
+            <div className="border-t border-border dark:border-white/8 p-3">
+              <div className="flex items-end gap-2 rounded-xl border border-border dark:border-white/10 bg-foreground/[0.03] dark:bg-white/[0.03] px-3 py-2 focus-within:border-blue-500/40 transition-colors duration-200">
                 <textarea
                   ref={inputRef}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder={isMaintenance ? "Assistant temporarily unavailable" : "Ask about Khian&apos;s skills, projects…"}
+                  placeholder={isMaintenance ? "Assistant temporarily unavailable" : "Ask about Khian..."}
                   rows={1}
                   aria-label="Message input"
                   disabled={isLoading || isMaintenance}
@@ -456,7 +456,7 @@ export function ChatAssistant() {
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50",
                     input.trim() && !isLoading
                       ? "bg-blue-500 text-white hover:bg-blue-600"
-                      : "bg-white/5 text-muted-foreground",
+                      : "bg-foreground/5 dark:bg-white/5 text-muted-foreground",
                   )}
                 >
                   <Send className="size-3.5" />
@@ -485,14 +485,14 @@ export function ChatAssistant() {
         className={cn(
           "fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium shadow-lg",
           "transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50",
-          "border-white/15 bg-[#09090B]/92 text-foreground backdrop-blur-xl [@media(pointer:coarse)]:bg-[#09090B]/95 [@media(pointer:coarse)]:backdrop-blur-none",
+          "border-border dark:border-white/15 bg-background/92 dark:bg-[#09090B]/92 text-foreground backdrop-blur-xl [@media(pointer:coarse)]:bg-background/95 dark:[@media(pointer:coarse)]:bg-[#09090B]/95",
           "hover:border-blue-500/40 hover:shadow-[0_0_24px_rgba(59,130,246,0.15)]",
           isOpen && "border-blue-500/40 shadow-[0_0_24px_rgba(59,130,246,0.15)]",
         )}
         style={{ zIndex: 60 }}
         whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
       >
-        <Bot className="size-4 text-blue-400" aria-hidden="true" />
+        <Bot className="size-4 text-blue-600 dark:text-blue-400" aria-hidden="true" />
         Ask AI
       </motion.button>
 

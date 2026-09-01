@@ -41,7 +41,7 @@ export function Contact() {
           <div className="mt-10 flex justify-center">
             <button
               onClick={handleGetInTouch}
-              className="group flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-8 text-sm font-medium text-foreground shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_8px_24px_rgba(0,0,0,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+              className="group flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full border border-border dark:border-white/10 bg-foreground/[0.03] dark:bg-white/[0.03] px-8 text-sm font-medium text-foreground shadow-sm dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] backdrop-blur-md transition-all duration-300 hover:border-foreground/20 dark:hover:border-white/20 hover:bg-foreground/[0.06] dark:hover:bg-white/[0.05] hover:shadow-md dark:hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_8px_24px_rgba(0,0,0,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
             >
               Get in Touch
               <ArrowUp className="size-4 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:text-foreground" />

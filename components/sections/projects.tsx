@@ -14,9 +14,9 @@ import { useFineHover } from "@/lib/use-media-query";
 import { cn } from "@/lib/utils";
 
 const STATUS_STYLES = {
-  live: "border-emerald-500/30 bg-emerald-500/10 text-emerald-400",
-  completed: "border-blue-500/30 bg-blue-500/10 text-blue-400",
-  "in-progress": "border-amber-500/30 bg-amber-500/10 text-amber-400",
+  live: "border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+  completed: "border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400",
+  "in-progress": "border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400",
 } as const;
 
 const STATUS_LABELS = {
@@ -70,8 +70,8 @@ export function Projects({ projects }: { projects: Project[] }) {
                 className={cn(
                   "rounded-full border px-4 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50",
                   activeCategory === category
-                    ? "border-blue-500/50 bg-blue-500/10 text-blue-400"
-                    : "border-white/10 bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
+                    ? "border-blue-500/50 bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                    : "border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5 text-muted-foreground hover:bg-foreground/10 dark:hover:bg-white/10 hover:text-foreground dark:hover:text-white"
                 )}
               >
                 {category}
@@ -100,7 +100,7 @@ export function Projects({ projects }: { projects: Project[] }) {
               >
                 {/* Optional Thumbnail */}
                 {project.thumbnailUrl && (
-                  <div className="mb-6 aspect-video overflow-hidden rounded-lg bg-white/5 border border-white/5 group">
+                  <div className="mb-6 aspect-video overflow-hidden rounded-lg bg-foreground/5 dark:bg-white/5 border border-border dark:border-white/5 group">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
                       src={project.thumbnailUrl} 
@@ -115,7 +115,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                   <div className="min-w-0 flex-1">
                     {/* Title + underline accent */}
                     <div className="relative inline-block">
-                      <h3 className="text-lg font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-white">
+                      <h3 className="text-lg font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-foreground dark:group-hover:text-white">
                         {project.title}
                       </h3>
                       <motion.span
@@ -161,7 +161,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-md border border-white/8 bg-white/[0.03] px-2 py-0.5 text-[11px] font-medium text-muted-foreground"
+                      className="rounded-md border border-border dark:border-white/8 bg-foreground/[0.03] dark:bg-white/[0.03] px-2 py-0.5 text-[11px] font-medium text-muted-foreground"
                     >
                       {tag}
                     </span>
@@ -169,10 +169,10 @@ export function Projects({ projects }: { projects: Project[] }) {
                 </div>
 
                 {/* CTA & Links */}
-                <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-white/5 pt-5">
+                <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-border dark:border-white/5 pt-5">
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="inline-flex items-center gap-2 rounded-md bg-blue-500/10 px-3 py-1.5 text-xs font-medium text-blue-400 transition-colors hover:bg-blue-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+                    className="inline-flex items-center gap-2 rounded-md bg-blue-500/10 px-3 py-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 transition-colors hover:bg-blue-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
                     View Case Study
                   </Link>
@@ -254,7 +254,7 @@ export function Projects({ projects }: { projects: Project[] }) {
               href="https://github.com/Mark-Khian"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded"
+              className="text-blue-600 dark:text-blue-400 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded"
             >
               GitHub
             </Link>

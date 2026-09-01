@@ -90,9 +90,14 @@ export function ParticleBackground() {
         : CONNECTION_DISTANCE_DESKTOP;
       const drawConnections = !mobile;
 
+      const isDark = document.documentElement.classList.contains("dark");
+      const particleRgb = isDark ? "147,210,255" : "100,116,139";
+      const attractionRgb = isDark ? "96,165,250" : "37,99,235";
+      const spotlightColor = isDark ? "rgba(59,130,246,0.06)" : "rgba(59,130,246,0.03)";
+
       if (!mobile && mx > 0) {
         const spotlight = ctx.createRadialGradient(mx, my, 0, mx, my, 280);
-        spotlight.addColorStop(0, "rgba(59,130,246,0.06)");
+        spotlight.addColorStop(0, spotlightColor);
         spotlight.addColorStop(1, "transparent");
         ctx.fillStyle = spotlight;
         ctx.fillRect(0, 0, width, height);
@@ -127,7 +132,7 @@ export function ParticleBackground() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(147,210,255,${p.opacity})`;
+        ctx.fillStyle = `rgba(${particleRgb},${p.opacity})`;
         ctx.fill();
       }
 
@@ -147,7 +152,7 @@ export function ParticleBackground() {
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
               ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = `rgba(147,210,255,${alpha})`;
+              ctx.strokeStyle = `rgba(${particleRgb},${alpha})`;
               ctx.lineWidth = 0.6;
               ctx.stroke();
             }
@@ -164,7 +169,7 @@ export function ParticleBackground() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mx, my);
-            ctx.strokeStyle = `rgba(96,165,250,${alpha})`;
+            ctx.strokeStyle = `rgba(${attractionRgb},${alpha})`;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }

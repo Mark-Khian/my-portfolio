@@ -17,7 +17,7 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className={cn("max-w-2xl", className)}>
-      <p className="font-mono text-sm font-medium tracking-wide text-blue-400 uppercase">
+      <p className="font-mono text-sm font-medium tracking-wide text-blue-600 dark:text-blue-400 uppercase">
         {label}
       </p>
       <h2

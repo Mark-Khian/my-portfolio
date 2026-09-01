@@ -58,7 +58,7 @@ export function Services() {
                   <div className="flex h-full flex-col">
                     <div className="mb-6 flex items-center gap-4">
                       <span
-                        className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-colors duration-300"
+                        className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5 transition-colors duration-300"
                         style={{
                           borderColor: `${accentColor}25`,
                           backgroundColor: `${accentColor}08`,

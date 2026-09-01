@@ -81,7 +81,7 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
           <GlassCard className="h-full w-full px-6 py-5 sm:px-8 sm:py-6 lg:px-12 lg:py-8">
             <div className="flex h-full flex-col gap-3 sm:gap-4 justify-center">
               <motion.div variants={itemVariants}>
-                <span className="inline-flex items-center rounded-full border border-white/10 bg-white/8 px-3 py-1 text-xs font-medium text-muted-foreground [@media(hover:hover)_and_(pointer:fine)]:bg-white/5 [@media(hover:hover)_and_(pointer:fine)]:backdrop-blur-sm">
+                <span className="inline-flex items-center rounded-full border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/8 px-3 py-1 text-xs font-medium text-muted-foreground [@media(hover:hover)_and_(pointer:fine)]:bg-foreground/5 dark:[@media(hover:hover)_and_(pointer:fine)]:bg-white/5 [@media(hover:hover)_and_(pointer:fine)]:backdrop-blur-sm">
                   <span
                     className="mr-2 inline-block size-1.5 shrink-0 rounded-full bg-emerald-500"
                     aria-hidden="true"
@@ -95,7 +95,7 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
                   {siteConfig.name}
                 </h1>
 
-                <p className="font-mono text-sm text-blue-400 sm:text-base">
+                <p className="font-mono text-sm text-blue-600 dark:text-blue-400 sm:text-base">
                   {siteConfig.role}
                 </p>
 
@@ -145,8 +145,8 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
                     className={cn(
                       "h-11 w-full flex items-center justify-center gap-1.5 cursor-pointer rounded-full px-2 sm:px-6 text-xs sm:text-sm font-medium border transition-all duration-300",
                       highlightContact
-                        ? "border-blue-500 bg-blue-500/20 text-blue-400 shadow-[0_0_24px_rgba(59,130,246,0.3)]"
-                        : "border-white/10 !bg-transparent hover:!bg-white/10"
+                        ? "border-blue-500 bg-blue-500/20 text-blue-600 dark:text-blue-400 shadow-[0_0_24px_rgba(59,130,246,0.3)]"
+                        : "border-border dark:border-white/10 !bg-transparent hover:!bg-foreground/5 dark:hover:!bg-white/10"
                     )}
                   >
                     <Mail className="size-4" />
@@ -162,7 +162,7 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
                   <Button
                     onClick={() => setIsCvModalOpen(true)}
                     variant="outline"
-                    className="h-11 w-full flex items-center justify-center gap-1.5 cursor-pointer rounded-full px-2 sm:px-6 text-xs sm:text-sm font-medium border border-white/10 !bg-transparent hover:!bg-white/10 transition-colors"
+                    className="h-11 w-full flex items-center justify-center gap-1.5 cursor-pointer rounded-full px-2 sm:px-6 text-xs sm:text-sm font-medium border border-border dark:border-white/10 !bg-transparent hover:!bg-foreground/5 dark:hover:!bg-white/10 transition-colors"
                   >
                     <FileText className="size-4" />
                     <span>View CV</span>
@@ -202,10 +202,10 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
           aria-label="Scroll to about section"
           className="pointer-events-auto group flex cursor-pointer flex-col items-center gap-4"
         >
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-white/50 transition-colors group-hover:text-white/90">
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground dark:text-white/50 transition-colors group-hover:text-foreground dark:group-hover:text-white/90">
             Scroll to Explore
           </span>
-          <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-white/20 p-1 transition-colors group-hover:border-white/40">
+          <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-border dark:border-white/20 p-1 transition-colors group-hover:border-foreground/30 dark:group-hover:border-white/40">
             <motion.div
               animate={prefersReducedMotion ? {} : { y: [0, 12, 0], opacity: [1, 0, 1] }}
               transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity }}

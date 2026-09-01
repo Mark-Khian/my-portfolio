@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { siteMetadata } from "@/lib/site-config";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { ParticleBackground } from "@/components/particle-background";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -43,13 +45,22 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#09090B]">
-        <ParticleBackground />
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
+      <body className="min-h-full flex flex-col">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <ParticleBackground />
+          <ThemeToggle />
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

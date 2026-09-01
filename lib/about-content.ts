@@ -1,12 +1,13 @@
 import {
-  Briefcase,
   GraduationCap,
-  Lightbulb,
-  Sparkles,
-  Layers,
   CheckCircle,
-  MessageSquare,
-  ShieldCheck,
+  Route,
+  ListChecks,
+  FileText,
+  RefreshCw,
+  BrainCircuit,
+  CalendarCheck2,
+  Target,
   type LucideIcon,
 } from "lucide-react";
 
@@ -29,26 +30,26 @@ export const aboutContent = {
   },
   journey: {
     title: "My Journey",
-    icon: Lightbulb,
+    icon: Route,
     paragraphs: [
-      "My work has grown from networking and web development into building digital systems, improving workflows, and exploring how AI automation can simplify repetitive processes.",
+      "What started with network configuration and web development has expanded into building digital systems, improving workflows, and developing AI-assisted workflows to simplify repetitive work.",
     ],
   },
   howIWork: {
     title: "How I Work",
-    icon: Sparkles,
+    icon: ListChecks,
     traits: [
-      { icon: Layers, text: "Structured approach to tasks and workflows" },
+      { icon: ListChecks, text: "Structured approach to tasks and workflows" },
       { icon: CheckCircle, text: "Organized and detail-oriented" },
-      { icon: MessageSquare, text: "Clear task updates and documentation" },
-      { icon: Briefcase, text: "Adaptable to different workflows" },
-      { icon: Lightbulb, text: "Analytical approach to problem-solving" },
-      { icon: ShieldCheck, text: "Consistent with deadlines and deliverables" },
+      { icon: FileText, text: "Clear task updates and documentation" },
+      { icon: RefreshCw, text: "Adaptable to different workflows" },
+      { icon: BrainCircuit, text: "Analytical approach to problem-solving" },
+      { icon: CalendarCheck2, text: "Consistent with deadlines and deliverables" },
     ] satisfies AboutTrait[],
   },
   careerGoals: {
     title: "What I’m Building Toward",
-    icon: Briefcase,
+    icon: Target,
     paragraphs: [
       "Building toward creating organized operations, secure web systems, and smarter automation that improve how work gets done.",
     ],

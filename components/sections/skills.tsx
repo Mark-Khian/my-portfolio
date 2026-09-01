@@ -11,6 +11,7 @@ import {
   Layers,
   FileText,
   MessageSquare,
+  BrainCircuit,
   type LucideIcon,
 } from "lucide-react";
 
@@ -44,7 +45,7 @@ function ToolTooltip({ name }: { name: string }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 5 }}
       transition={{ duration: 0.12, ease: "easeOut" }}
-      className="pointer-events-none absolute bottom-full left-1/2 z-[9999] mb-2 -translate-x-1/2 whitespace-nowrap rounded border border-white/10 bg-zinc-900 px-2 py-0.5 text-[10px] font-medium tracking-wide text-foreground shadow-xl"
+      className="pointer-events-none absolute bottom-full left-1/2 z-[9999] mb-2 -translate-x-1/2 whitespace-nowrap rounded border border-border dark:border-white/10 bg-popover dark:bg-zinc-900 px-2 py-0.5 text-[10px] font-medium tracking-wide text-popover-foreground dark:text-foreground shadow-xl"
     >
       {name}
     </motion.span>
@@ -85,20 +86,24 @@ const ToolButton = memo(function ToolButton({
 
   const btnSize = size === "lg" ? "size-12 rounded-xl" : "size-10 rounded-lg";
   const iconSize = size === "lg" ? "size-6" : "size-5";
+  const lightColor = tool.color === "#FFFFFF" ? "#000000" : tool.color;
 
   return (
     <button
       type="button"
       aria-label={`${tool.name} - ${categoryTitle}`}
       className={cn(
-        "relative flex items-center justify-center border border-white/5 bg-white/[0.02] text-muted-foreground outline-none transition-[border-color,box-shadow,transform] duration-300 hover:text-foreground focus-visible:ring-2 hover:-translate-y-0.5",
+        "relative flex items-center justify-center border border-border dark:border-white/5 bg-foreground/[0.02] dark:bg-white/[0.02] text-muted-foreground outline-none transition-[border-color,box-shadow,transform] duration-300 hover:text-foreground focus-visible:ring-2 hover:-translate-y-0.5",
+        "[--tool-active-color:var(--tool-color-light)] dark:[--tool-active-color:var(--tool-color)]",
         btnSize,
         focusRingColor,
       )}
       style={{
-        borderColor: hovered ? `${tool.color}35` : undefined,
-        boxShadow: hovered ? `0 0 16px ${tool.color}15` : undefined,
-      }}
+        "--tool-color": tool.color,
+        "--tool-color-light": lightColor,
+        borderColor: hovered ? `color-mix(in srgb, var(--tool-active-color) 21%, transparent)` : undefined,
+        boxShadow: hovered ? `0 0 16px color-mix(in srgb, var(--tool-active-color) 8%, transparent)` : undefined,
+      } as React.CSSProperties}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setHovered(true)}
@@ -113,7 +118,7 @@ const ToolButton = memo(function ToolButton({
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.2 }}
             style={{
-              background: `radial-gradient(circle, ${tool.color} 0%, transparent 75%)`,
+              background: `radial-gradient(circle, var(--tool-active-color) 0%, transparent 75%)`,
             }}
           />
         )}
@@ -124,7 +129,7 @@ const ToolButton = memo(function ToolButton({
           name={tool.slug as IconName}
           className={cn("transition-[color,transform] duration-300", iconSize)}
           style={{
-            color: hovered ? tool.color : "currentColor",
+            color: hovered ? "var(--tool-active-color)" : "currentColor",
             transform: hovered && !prefersReducedMotion ? "scale(1.1)" : "none",
           }}
         />
@@ -133,7 +138,7 @@ const ToolButton = memo(function ToolButton({
           <tool.lucideIcon
             className={cn("transition-[color,transform] duration-300", iconSize)}
             style={{
-              color: hovered ? tool.color : "currentColor",
+              color: hovered ? "var(--tool-active-color)" : "currentColor",
               transform: hovered && !prefersReducedMotion ? "scale(1.1)" : "none",
             }}
           />
@@ -165,6 +170,14 @@ const coreCategories: Category[] = [
       { name: "HTML5", slug: "html5", color: "#E34F26", isBrand: true },
       { name: "CSS3", slug: "css3", color: "#1572B6", isBrand: true },
       { name: "Node.js", slug: "nodedotjs", color: "#339933", isBrand: true },
+      { name: "Express.js", slug: "express", color: "#FFFFFF", isBrand: true },
+      { name: "PHP", slug: "php", color: "#777BB4", isBrand: true },
+      { name: "Laravel", slug: "laravel", color: "#FF2D20", isBrand: true },
+      { name: "Angular", slug: "angular", color: "#DD0031", isBrand: true },
+      { name: "Vue.js", slug: "vuedotjs", color: "#4FC08D", isBrand: true },
+      { name: "MySQL", slug: "mysql", color: "#4479A1", isBrand: true },
+      { name: "MongoDB", slug: "mongodb", color: "#47A248", isBrand: true },
+      { name: "PostgreSQL", slug: "postgresql", color: "#4169E1", isBrand: true },
     ],
   },
   {
@@ -192,7 +205,7 @@ const operationalCategories: Category[] = [
     icon: Workflow,
     accentColor: "#8B5CF6",
     tools: [
-      { name: "OpenAI", slug: "openai", color: "#10A37F", isBrand: true },
+      { name: "AI Integration", slug: "ai-integration", color: "#8B5CF6", isBrand: false, lucideIcon: BrainCircuit },
       { name: "Workflow Design", slug: "workflow-design", color: "#8B5CF6", isBrand: false, lucideIcon: Workflow },
       { name: "Process Automation", slug: "process-automation", color: "#8B5CF6", isBrand: false, lucideIcon: Settings },
       { name: "API Integration", slug: "api-integration", color: "#8B5CF6", isBrand: false, lucideIcon: Network },
@@ -218,8 +231,8 @@ const operationalCategories: Category[] = [
   },
   {
     id: "collaboration-design",
-    title: "Collaboration & Design",
-    description: "Tools for communication, team coordination, project collaboration, and visual content.",
+    title: "Communication & Collaboration",
+    description: "Tools for communication, team coordination, project collaboration, and task management.",
     icon: MessageSquare,
     accentColor: "#F43F5E",
     tools: [
@@ -227,7 +240,7 @@ const operationalCategories: Category[] = [
       { name: "Slack", slug: "slack", color: "#4A154B", isBrand: true },
       { name: "Zoom", slug: "zoom", color: "#2D8CFF", isBrand: true },
       { name: "Google Meet", slug: "googlemeet", color: "#00897B", isBrand: true },
-      { name: "Canva", slug: "canva", color: "#00C4CC", isBrand: true },
+      { name: "Discord", slug: "discord", color: "#5865F2", isBrand: true },
       { name: "ClickUp", slug: "clickup", color: "#7B68EE", isBrand: true },
       { name: "Asana", slug: "asana", color: "#F06A6A", isBrand: true },
       { name: "Trello", slug: "trello", color: "#0079BF", isBrand: true },
@@ -270,7 +283,7 @@ export function Skills() {
           <FadeIn delay={0.05}>
             <div className="flex items-center gap-2 mb-6">
               <span className="h-px w-6 bg-blue-500" />
-              <h4 className="font-mono text-xs font-semibold tracking-wider text-blue-400 uppercase">
+              <h4 className="font-mono text-xs font-semibold tracking-wider text-blue-600 dark:text-blue-400 uppercase">
                 Development & Systems
               </h4>
             </div>
@@ -288,7 +301,7 @@ export function Skills() {
                 >
                   <div className="mb-5 flex items-start gap-4">
                     <span
-                      className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5"
+                      className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5"
                       style={{
                         borderColor: `${category.accentColor}25`,
                         backgroundColor: `${category.accentColor}08`,
@@ -348,7 +361,7 @@ export function Skills() {
           <FadeIn delay={0.05}>
             <div className="flex items-center gap-2 mb-6">
               <span className="h-px w-6 bg-purple-500" />
-              <h4 className="font-mono text-xs font-semibold tracking-wider text-purple-400 uppercase">
+              <h4 className="font-mono text-xs font-semibold tracking-wider text-purple-600 dark:text-purple-400 uppercase">
                 Automation & Productivity
               </h4>
             </div>
@@ -366,7 +379,7 @@ export function Skills() {
                 >
                   <div className="mb-4 flex items-center gap-3">
                     <span
-                      className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5"
+                      className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5"
                       style={{
                         borderColor: `${category.accentColor}25`,
                         backgroundColor: `${category.accentColor}08`,
