@@ -5,13 +5,6 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   Code2,
   Terminal,
-  Workflow,
-  Settings,
-  Network,
-  Layers,
-  FileText,
-  MessageSquare,
-  BrainCircuit,
   type LucideIcon,
 } from "lucide-react";
 
@@ -86,23 +79,26 @@ const ToolButton = memo(function ToolButton({
 
   const btnSize = size === "lg" ? "size-12 rounded-xl" : "size-10 rounded-lg";
   const iconSize = size === "lg" ? "size-6" : "size-5";
+  const isThemeAware = tool.color === "#FFFFFF" || tool.color === "#000000";
   const lightColor = tool.color === "#FFFFFF" ? "#000000" : tool.color;
+  const darkColor = tool.color === "#000000" ? "#FFFFFF" : tool.color;
 
   return (
     <button
       type="button"
       aria-label={`${tool.name} - ${categoryTitle}`}
       className={cn(
-        "relative flex items-center justify-center border border-border dark:border-white/5 bg-foreground/[0.02] dark:bg-white/[0.02] text-muted-foreground outline-none transition-[border-color,box-shadow,transform] duration-300 hover:text-foreground focus-visible:ring-2 hover:-translate-y-0.5",
+        "relative flex items-center justify-center border border-border dark:border-white/5 bg-foreground/[0.02] dark:bg-white/[0.02] outline-none transition-[border-color,box-shadow,transform] duration-300 focus-visible:ring-2 hover:-translate-y-0.5",
         "[--tool-active-color:var(--tool-color-light)] dark:[--tool-active-color:var(--tool-color)]",
+        isThemeAware ? "text-foreground" : "text-[var(--tool-active-color)]",
         btnSize,
         focusRingColor,
       )}
       style={{
-        "--tool-color": tool.color,
+        "--tool-color": darkColor,
         "--tool-color-light": lightColor,
-        borderColor: hovered ? `color-mix(in srgb, var(--tool-active-color) 21%, transparent)` : undefined,
-        boxShadow: hovered ? `0 0 16px color-mix(in srgb, var(--tool-active-color) 8%, transparent)` : undefined,
+        borderColor: hovered ? `color-mix(in srgb, var(--tool-active-color) 25%, transparent)` : undefined,
+        boxShadow: hovered ? `0 0 16px color-mix(in srgb, var(--tool-active-color) 12%, transparent)` : undefined,
       } as React.CSSProperties}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -129,7 +125,7 @@ const ToolButton = memo(function ToolButton({
           name={tool.slug as IconName}
           className={cn("transition-[color,transform] duration-300", iconSize)}
           style={{
-            color: hovered ? "var(--tool-active-color)" : "currentColor",
+            color: "var(--tool-active-color)",
             transform: hovered && !prefersReducedMotion ? "scale(1.1)" : "none",
           }}
         />
@@ -138,7 +134,7 @@ const ToolButton = memo(function ToolButton({
           <tool.lucideIcon
             className={cn("transition-[color,transform] duration-300", iconSize)}
             style={{
-              color: hovered ? "var(--tool-active-color)" : "currentColor",
+              color: "var(--tool-active-color)",
               transform: hovered && !prefersReducedMotion ? "scale(1.1)" : "none",
             }}
           />
@@ -178,6 +174,7 @@ const coreCategories: Category[] = [
       { name: "MySQL", slug: "mysql", color: "#4479A1", isBrand: true },
       { name: "MongoDB", slug: "mongodb", color: "#47A248", isBrand: true },
       { name: "PostgreSQL", slug: "postgresql", color: "#4169E1", isBrand: true },
+      { name: "Postman", slug: "postman", color: "#FF6C37", isBrand: true },
     ],
   },
   {
@@ -189,62 +186,12 @@ const coreCategories: Category[] = [
     accentColor: "#06B6D4",
     tools: [
       { name: "Git", slug: "git", color: "#F05032", isBrand: true },
-      { name: "Windows OS", slug: "windows", color: "#0078D4", isBrand: true },
-      { name: "Linux OS", slug: "linux", color: "#FCC624", isBrand: true },
-      { name: "Cisco Systems", slug: "cisco", color: "#1BA0D7", isBrand: true },
-      { name: "Wireshark", slug: "wireshark", color: "#1679A7", isBrand: true },
-    ],
-  },
-];
-
-const operationalCategories: Category[] = [
-  {
-    id: "ai-automation",
-    title: "AI Automation",
-    description: "Tools and workflow capabilities used to connect processes, automate tasks, and add AI-assisted steps.",
-    icon: Workflow,
-    accentColor: "#8B5CF6",
-    tools: [
-      { name: "AI Integration", slug: "ai-integration", color: "#8B5CF6", isBrand: false, lucideIcon: BrainCircuit },
-      { name: "Workflow Design", slug: "workflow-design", color: "#8B5CF6", isBrand: false, lucideIcon: Workflow },
-      { name: "Process Automation", slug: "process-automation", color: "#8B5CF6", isBrand: false, lucideIcon: Settings },
-      { name: "API Integration", slug: "api-integration", color: "#8B5CF6", isBrand: false, lucideIcon: Network },
-      { name: "Data Mapping & Transformation", slug: "data-mapping", color: "#8B5CF6", isBrand: false, lucideIcon: Layers },
-    ],
-  },
-  {
-    id: "virtual-assistance",
-    title: "Virtual Assistance",
-    description: "Workspace and productivity tools for organizing information, schedules, records, and daily operations.",
-    icon: FileText,
-    accentColor: "#10B981",
-    tools: [
-      { name: "Google Docs", slug: "googledocs", color: "#4285F4", isBrand: true },
-      { name: "Google Sheets", slug: "googlesheets", color: "#0F9D58", isBrand: true },
-      { name: "Google Drive", slug: "googledrive", color: "#4285F4", isBrand: true },
-      { name: "Google Calendar", slug: "googlecalendar", color: "#4285F4", isBrand: true },
-      { name: "Google Forms", slug: "googleforms", color: "#7248B9", isBrand: true },
-      { name: "Microsoft 365", slug: "microsoft", color: "#D83B01", isBrand: true },
-      { name: "HubSpot", slug: "hubspot", color: "#FF7A59", isBrand: true },
-      { name: "Airtable", slug: "airtable", color: "#18BFFF", isBrand: true },
-    ],
-  },
-  {
-    id: "collaboration-design",
-    title: "Communication & Collaboration",
-    description: "Tools for communication, team coordination, project collaboration, and task management.",
-    icon: MessageSquare,
-    accentColor: "#F43F5E",
-    tools: [
-      { name: "Gmail", slug: "gmail", color: "#EA4335", isBrand: true },
-      { name: "Slack", slug: "slack", color: "#4A154B", isBrand: true },
-      { name: "Zoom", slug: "zoom", color: "#2D8CFF", isBrand: true },
-      { name: "Google Meet", slug: "googlemeet", color: "#00897B", isBrand: true },
-      { name: "Discord", slug: "discord", color: "#5865F2", isBrand: true },
-      { name: "ClickUp", slug: "clickup", color: "#7B68EE", isBrand: true },
-      { name: "Asana", slug: "asana", color: "#F06A6A", isBrand: true },
-      { name: "Trello", slug: "trello", color: "#0079BF", isBrand: true },
-      { name: "Notion", slug: "notion", color: "#FFFFFF", isBrand: true },
+      { name: "GitHub", slug: "github", color: "#FFFFFF", isBrand: true },
+      { name: "Vercel", slug: "vercel", color: "#FFFFFF", isBrand: true },
+      { name: "VS Code", slug: "vscode", color: "#007ACC", isBrand: true },
+      { name: "Docker", slug: "docker", color: "#2496ED", isBrand: true },
+      { name: "VirtualBox", slug: "virtualbox", color: "#2F61B4", isBrand: true },
+      { name: "Cisco Packet Tracer", slug: "cisco", color: "#1BA0D7", isBrand: true },
     ],
   },
 ];
@@ -273,128 +220,40 @@ export function Skills() {
           <SectionHeader
             label="Capabilities"
             title="Tech Stack & Toolkit"
-            description="A modern toolkit for building reliable systems and smoother workflows."
+            description="Tools and technologies used for building web systems and supporting networks."
             headingId="skills-heading"
           />
         </FadeIn>
 
-        {/* Section A: Core Engineering & Systems */}
-        <div className="mt-16">
-          <FadeIn delay={0.05}>
-            <div className="flex items-center gap-2 mb-6">
-              <span className="h-px w-6 bg-blue-500" />
-              <h4 className="font-mono text-xs font-semibold tracking-wider text-blue-600 dark:text-blue-400 uppercase">
-                Development & Systems
-              </h4>
-            </div>
-          </FadeIn>
-
-          <div className="grid gap-6 md:grid-cols-2">
-            {coreCategories.map((category, index) => (
-              <FadeIn key={category.id} delay={0.1 + index * 0.05}>
-                <GlassCard
-                  as={motion.article}
-                  initial="rest"
-                  whileHover={canHover ? "hover" : undefined}
-                  animate="rest"
-                  className="relative h-full overflow-visible p-6 sm:p-8"
-                >
-                  <div className="mb-5 flex items-start gap-4">
-                    <span
-                      className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5"
-                      style={{
-                        borderColor: `${category.accentColor}25`,
-                        backgroundColor: `${category.accentColor}08`,
-                        color: category.accentColor,
-                      }}
-                    >
-                      <category.icon className="size-5" aria-hidden="true" />
-                    </span>
-                    <div className="min-w-0">
-                      <div className="relative inline-block">
-                        <h3 className="text-xl font-semibold tracking-tight text-foreground">
-                          {category.title}
-                        </h3>
-                        <motion.span
-                          aria-hidden="true"
-                          className="absolute -bottom-2 left-0 h-px w-full origin-left"
-                          style={{
-                            background: `linear-gradient(to right, ${category.accentColor}cc, #a78bfa80, transparent)`,
-                            filter: `blur(0.5px)`,
-                          }}
-                          variants={{
-                            rest: { scaleX: 0, opacity: 0 },
-                            hover: {
-                              scaleX: 1,
-                              opacity: 1,
-                              transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
-                            },
-                          }}
-                        />
-                      </div>
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                        {category.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <ul className="mt-6 flex flex-wrap gap-3">
-                    {category.tools.map((tool) => (
-                      <li key={tool.slug}>
-                        <ToolButton
-                          tool={tool}
-                          categoryTitle={category.title}
-                          size="lg"
-                          focusRingColor="focus-visible:ring-blue-500/50 focus-visible:border-blue-500/40"
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </GlassCard>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-
-        {/* Section B: Operations & Digital Workflows */}
-        <div className="mt-20">
-          <FadeIn delay={0.05}>
-            <div className="flex items-center gap-2 mb-6">
-              <span className="h-px w-6 bg-purple-500" />
-              <h4 className="font-mono text-xs font-semibold tracking-wider text-purple-600 dark:text-purple-400 uppercase">
-                Automation & Productivity
-              </h4>
-            </div>
-          </FadeIn>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {operationalCategories.map((category, index) => (
-              <FadeIn key={category.id} delay={0.1 + index * 0.05}>
-                <GlassCard
-                  as={motion.article}
-                  initial="rest"
-                  whileHover={canHover ? "hover" : undefined}
-                  animate="rest"
-                  className="relative h-full overflow-visible p-6"
-                >
-                  <div className="mb-4 flex items-center gap-3">
-                    <span
-                      className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5"
-                      style={{
-                        borderColor: `${category.accentColor}25`,
-                        backgroundColor: `${category.accentColor}08`,
-                        color: category.accentColor,
-                      }}
-                    >
-                      <category.icon className="size-4" aria-hidden="true" />
-                    </span>
-                    <div className="relative min-w-0">
-                      <h3 className="text-base font-semibold tracking-tight text-foreground">
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
+          {coreCategories.map((category, index) => (
+            <FadeIn key={category.id} delay={0.1 + index * 0.05}>
+              <GlassCard
+                as={motion.article}
+                initial="rest"
+                whileHover={canHover ? "hover" : undefined}
+                animate="rest"
+                className="relative h-full overflow-visible p-6 sm:p-8"
+              >
+                <div className="mb-5 flex items-start gap-4">
+                  <span
+                    className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/5"
+                    style={{
+                      borderColor: `${category.accentColor}25`,
+                      backgroundColor: `${category.accentColor}08`,
+                      color: category.accentColor,
+                    }}
+                  >
+                    <category.icon className="size-5" aria-hidden="true" />
+                  </span>
+                  <div className="min-w-0">
+                    <div className="relative inline-block">
+                      <h3 className="text-xl font-semibold tracking-tight text-foreground">
                         {category.title}
                       </h3>
                       <motion.span
                         aria-hidden="true"
-                        className="absolute -bottom-1.5 left-0 h-px w-full origin-left"
+                        className="absolute -bottom-2 left-0 h-px w-full origin-left"
                         style={{
                           background: `linear-gradient(to right, ${category.accentColor}cc, #a78bfa80, transparent)`,
                           filter: `blur(0.5px)`,
@@ -409,28 +268,27 @@ export function Skills() {
                         }}
                       />
                     </div>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {category.description}
+                    </p>
                   </div>
+                </div>
 
-                  <p className="text-xs leading-relaxed text-muted-foreground min-h-[40px]">
-                    {category.description}
-                  </p>
-
-                  <ul className="mt-5 flex flex-wrap gap-2.5">
-                    {category.tools.map((tool) => (
-                      <li key={tool.slug}>
-                        <ToolButton
-                          tool={tool}
-                          categoryTitle={category.title}
-                          size="sm"
-                          focusRingColor="focus-visible:ring-purple-500/50 focus-visible:border-purple-500/40"
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </GlassCard>
-              </FadeIn>
-            ))}
-          </div>
+                <ul className="mt-6 flex flex-wrap gap-3">
+                  {category.tools.map((tool) => (
+                    <li key={tool.slug}>
+                      <ToolButton
+                        tool={tool}
+                        categoryTitle={category.title}
+                        size="lg"
+                        focusRingColor="focus-visible:ring-blue-500/50 focus-visible:border-blue-500/40"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </GlassCard>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>

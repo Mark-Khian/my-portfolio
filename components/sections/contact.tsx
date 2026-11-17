@@ -33,7 +33,7 @@ export function Contact() {
             Ready to work together?
           </h2>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Have a project, workflow, or task in mind? Let’s talk about how it can be organized, built, or improved.
+            Have a project in mind or an opportunity to share? Let&apos;s talk about how it can be built or improved.
           </p>
         </FadeIn>
 

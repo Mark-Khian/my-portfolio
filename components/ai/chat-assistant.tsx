@@ -13,9 +13,9 @@ import { useIsMounted } from "@/hooks/use-is-mounted";
 const SUGGESTIONS = [
   "What services does Khian offer?",
   "What kind of websites can he build?",
-  "Does he work with AI automation?",
+  "Can he help with network troubleshooting?",
   "What’s Khian’s networking background?",
-  "Is he open to freelance or internships?",
+  "What web technologies does he use?",
   "How can I contact Khian?",
 ];
 

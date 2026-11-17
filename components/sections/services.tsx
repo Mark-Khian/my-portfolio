@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ClipboardList, Layers, Workflow } from "lucide-react";
+import { Layers, Network } from "lucide-react";
 
 import { FadeIn } from "@/components/motion/fade-in";
 import { SectionHeader } from "@/components/section-header";
@@ -11,15 +11,13 @@ import { useFineHover } from "@/lib/use-media-query";
 
 // Map services to specific icons
 const SERVICE_ICONS = {
-  "General Virtual Assistant": ClipboardList,
-  "Full-Stack Development": Layers,
-  "AI Automation": Workflow,
+  "Web Development": Layers,
+  "Network Troubleshooting": Network,
 } as const;
 
 const SERVICE_COLORS = {
-  "General Virtual Assistant": "#10B981", // Emerald
-  "Full-Stack Development": "#8B5CF6",    // Violet
-  "AI Automation": "#06B6D4",         // Cyan
+  "Web Development": "#8B5CF6",       // Violet
+  "Network Troubleshooting": "#06B6D4", // Cyan
 } as const;
 
 export function Services() {
@@ -31,7 +29,7 @@ export function Services() {
       aria-labelledby="services-heading"
       className="border-t border-border/60 px-6 py-24 sm:px-10 sm:py-32 lg:px-16"
     >
-      <div className="mx-auto w-full max-w-[1400px]">
+      <div className="mx-auto w-full max-w-5xl">
         <FadeIn>
           <SectionHeader
             label="Services"
@@ -41,7 +39,7 @@ export function Services() {
           />
         </FadeIn>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
           {siteConfig.services.map((service, index) => {
             const Icon = SERVICE_ICONS[service.title as keyof typeof SERVICE_ICONS] || Layers;
             const accentColor = SERVICE_COLORS[service.title as keyof typeof SERVICE_COLORS] || "#3B82F6";

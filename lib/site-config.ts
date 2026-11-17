@@ -1,11 +1,9 @@
 export const siteConfig = {
   name: "Mark Khian Pangilinan",
-  role: "General VA · Web Development · AI Automation",
-  tagline: "From routine tasks to better workflows.",
+  role: "Web Development · Basic Network Troubleshooting",
+  tagline: "Learning through development and problem-solving.",
   description:
-    "Organized tasks, modern websites, and smarter workflows—all built to make your day easier.",
-  availability:
-    "Available for freelance & remote work opportunities",
+    "Gaining hands-on experience in web development and basic network troubleshooting, one project at a time.",
   links: {
     github: "https://github.com/Mark-Khian",
     email: "markkhian.pangilinan07@gmail.com",
@@ -20,41 +18,31 @@ export const siteConfig = {
   },
   services: [
     {
-      title: "General Virtual Assistant",
-      shortDescription: "Reliable support for daily tasks, communication, schedules, files, and other administrative work that keeps things organized.",
+      title: "Web Development",
+      shortDescription:
+        "Building modern, secure web systems across the frontend, backend, database, and API layer.",
       items: [
-        "Email & inbox organization",
-        "Calendar & schedule management",
-        "Data entry & record keeping",
-        "Online research",
-        "File & document management",
-        "Google Workspace & Microsoft 365"
-      ]
-    },
-    {
-      title: "Full-Stack Development",
-      shortDescription: "Building modern, secure web systems across the frontend, backend, database, and API layer.",
-      items: [
-        "System architecture",
+        "System design",
         "Modern frameworks",
         "Node.js & Express",
         "Database integration",
         "API integration",
-        "Security implementation"
-      ]
+        "Web security fundamentals",
+      ],
     },
     {
-      title: "AI Automation",
-      shortDescription: "Creating smarter workflows that reduce repetitive work, connect digital processes, and make everyday tasks more efficient.",
+      title: "Network Troubleshooting",
+      shortDescription:
+        "Diagnosing and fixing common connectivity issues, from cabling and Wi-Fi to IP and DNS problems.",
       items: [
-        "Workflow Analysis & Process Mapping",
-        "Trigger, Action & Conditional Logic",
-        "Data Mapping & Transformation",
-        "API & System Integration",
-        "AI-Assisted Decision Steps",
-        "Error Handling & Workflow Optimization"
-      ]
-    }
+        "Connectivity diagnosis (no internet, limited, or intermittent connection)",
+        "Wired & wireless troubleshooting",
+        "IP configuration issues (DHCP & static IP)",
+        "DNS resolution problems",
+        "Cable & physical connection checks",
+        "Command-line diagnostic tools (ping, ipconfig, tracert, nslookup)",
+      ],
+    },
   ],
 } as const;
 

@@ -2,6 +2,7 @@
 import { HomeHero } from "@/components/home-hero";
 import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
+import { Certifications } from "@/components/sections/certifications";
 import { Services } from "@/components/sections/services";
 import { Contact } from "@/components/sections/contact";
 
@@ -15,6 +16,7 @@ export default async function Home() {
         <Services />
         <About />
         <Skills />
+        <Certifications />
         <Contact />
       </main>
 

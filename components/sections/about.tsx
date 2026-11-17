@@ -1,5 +1,4 @@
 import {
-  ClipboardList,
   type LucideIcon,
 } from "lucide-react";
 
@@ -70,7 +69,6 @@ export function About() {
     journey,
     howIWork,
     careerGoals,
-    virtualAssistant,
   } = aboutContent;
 
   return (
@@ -121,15 +119,9 @@ export function About() {
             </ContentCard>
           </FadeIn>
 
-          <FadeIn delay={0.05}>
+          <FadeIn delay={0.05} className="lg:col-span-2">
             <ContentCard title={careerGoals.title} icon={careerGoals.icon}>
               <ProseBlock paragraphs={careerGoals.paragraphs} />
-            </ContentCard>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <ContentCard title={virtualAssistant.title} icon={ClipboardList}>
-              <ProseBlock paragraphs={[virtualAssistant.description]} />
             </ContentCard>
           </FadeIn>
         </div>

@@ -32,7 +32,7 @@ export const aboutContent = {
     title: "My Journey",
     icon: Route,
     paragraphs: [
-      "What started with network configuration and web development has expanded into building digital systems, improving workflows, and developing AI-assisted workflows to simplify repetitive work.",
+      "What started with network configuration and web development has grown into building full-stack web systems and learning to troubleshoot the networks they run on.",
     ],
   },
   howIWork: {
@@ -51,13 +51,7 @@ export const aboutContent = {
     title: "What I’m Building Toward",
     icon: Target,
     paragraphs: [
-      "Building toward creating organized operations, secure web systems, and smarter automation that improve how work gets done.",
+      "Building toward a career in web development and networking, creating secure web systems and supporting the networks behind them.",
     ],
-  },
-  virtualAssistant: {
-    label: "Additional capability",
-    title: "General Virtual Assistant",
-    description:
-      "Reliable support for daily operations through organization, research, scheduling, documentation, and digital workspace management using modern productivity tools.",
   },
 } as const;

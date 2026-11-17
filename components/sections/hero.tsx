@@ -80,16 +80,6 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
         <div className="xl:col-span-8 flex flex-col">
           <GlassCard className="h-full w-full px-6 py-5 sm:px-8 sm:py-6 lg:px-12 lg:py-8">
             <div className="flex h-full flex-col gap-3 sm:gap-4 justify-center">
-              <motion.div variants={itemVariants}>
-                <span className="inline-flex items-center rounded-full border border-border dark:border-white/10 bg-foreground/5 dark:bg-white/8 px-3 py-1 text-xs font-medium text-muted-foreground [@media(hover:hover)_and_(pointer:fine)]:bg-foreground/5 dark:[@media(hover:hover)_and_(pointer:fine)]:bg-white/5 [@media(hover:hover)_and_(pointer:fine)]:backdrop-blur-sm">
-                  <span
-                    className="mr-2 inline-block size-1.5 shrink-0 rounded-full bg-emerald-500"
-                    aria-hidden="true"
-                  />
-                  <span className="line-clamp-2 sm:line-clamp-1">{siteConfig.availability}</span>
-                </span>
-              </motion.div>
-
               <motion.div variants={itemVariants} className="space-y-1.5">
                 <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl lg:leading-[1.05] xl:whitespace-nowrap">
                   <span className="animate-shine-sweep bg-clip-text text-transparent">{siteConfig.name}</span>
@@ -182,39 +172,6 @@ export function Hero({ onConnectClick }: { onConnectClick?: () => void }) {
         </motion.div>
       </motion.div>
 
-      <motion.div
-        className="pointer-events-none absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center justify-center md:flex"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={
-          prefersReducedMotion
-            ? { duration: 0 }
-            : { delay: 0.9, duration: 0.5, ease: EASE }
-        }
-      >
-        <a
-          href="#about"
-          onClick={(e) => {
-            e.preventDefault();
-            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-            window.history.pushState(null, '', '#about');
-          }}
-          aria-label="Scroll to about section"
-          className="pointer-events-auto group flex cursor-pointer flex-col items-center gap-4"
-        >
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground dark:text-white/50 transition-colors group-hover:text-foreground dark:group-hover:text-white/90">
-            Scroll to Explore
-          </span>
-          <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-border dark:border-white/20 p-1 transition-colors group-hover:border-foreground/30 dark:group-hover:border-white/40">
-            <motion.div
-              animate={prefersReducedMotion ? {} : { y: [0, 12, 0], opacity: [1, 0, 1] }}
-              transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity }}
-              className="h-1.5 w-1 rounded-full bg-blue-500"
-              aria-hidden="true"
-            />
-          </div>
-        </a>
-      </motion.div>
       <CvModal isOpen={isCvModalOpen} onClose={() => setIsCvModalOpen(false)} />
     </section>
   );
